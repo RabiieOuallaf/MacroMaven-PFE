@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
 class GoogleAuthenticationController extends Controller
@@ -18,7 +17,7 @@ class GoogleAuthenticationController extends Controller
         $user = Socialite::driver('google')->user();
 
         // check if the user already exists 
-        $exstitingUser = User::where('email', $user->getEmail());  
+        $exstitingUser = User::firstWhere('email', $user->getEmail());  
         
         if($exstitingUser) {
             auth()->login($exstitingUser);
@@ -29,7 +28,6 @@ class GoogleAuthenticationController extends Controller
                 'email'=> $user->getEmail(),
                 'password' =>  ''
             ]);
-
             //Log in the new user 
             if(auth()->login($newUser)){
                 return response()->json(['Message' => 'User is logged in!'], 200);
