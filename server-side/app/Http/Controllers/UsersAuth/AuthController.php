@@ -16,6 +16,7 @@ class AuthController extends Controller implements AuthInterface
     
     static public function register(Request $request) :?JsonResponse
     {
+    
         $authService = AuthenticationFactory::create($request->authenticationType);
         $userData = $request;
         $user = $authService::register($userData);
@@ -35,7 +36,7 @@ class AuthController extends Controller implements AuthInterface
         if($user){
             return response()->json(['message' => $user], 200);
         }else{
-            return response()->json(['message' => 'User not found'], 404);
+            return response()->json(['message' => 'User not found'], 401);
         }
     }
 

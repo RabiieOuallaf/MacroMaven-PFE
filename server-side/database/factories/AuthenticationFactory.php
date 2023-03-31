@@ -2,7 +2,7 @@
 
     namespace Database\Factories;
 
-    use App\Http\Controllers\EmailAuthenticationController\EmailAuthenticationController;
+    use App\Http\Controllers\UsersAuth\EmailAuthenticationController;
 
     class AuthenticationFactory
     {
@@ -13,9 +13,8 @@
                 case 'email':
                     return new EmailAuthenticationController();
                     break;
-                
                 default:
-                    return null;
+                    return response()->json("Service doesn't exsit yet!");
                     break;
             }    
         }
