@@ -1,13 +1,30 @@
 
 import Authentification from './components/Authentification'
+import { createBrowserRouter, createRoutesFromElements,Route, Link, Outlet, RouterProvider } from 'react-router-dom';
 
-
-function App() {
+export default function App() {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      
+      <Route >
+        <Route  index element={<Authentification />}/>
+      </Route>
+    )
+  )
   return (
     <div className="App">
-        <Authentification />
+        <RouterProvider router={router}/>
     </div>
   );
 }
 
-export default App;
+// const Root = () => {
+//   return <>
+//     here 
+
+//     <div>
+//       <Outlet />
+//     </div>
+//   </>
+// }
+
