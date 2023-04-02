@@ -42,14 +42,23 @@ class EmailAuthenticationController extends Controller implements AuthInterface
 
     static public function login(Request $request) :? JsonResponse 
     {
-        $credentials = $request->validate([
+        $credentials = Validator::make($request->all(), [
             'email' => ['required', 'email'],
-            'password' => ['required', 'min:8','regex:/^(?=.*[a-z])(?=.*[A-Z])/']
+            'password' => ['required']
         ]);
+
+        if($credentials->fails()){
+            return response()->json(['Error' => $credentials->errors()], 401);
+        }
+
+        $credentials = $request->only('email', 'password');
+
         if(Auth::attempt($credentials)){
-            return response()->json(['Message' => 'User logged in seccussfully!', 200]);
+            $user = $request->user();
+            $token = $user->createToken('Access token')->accessToken; 
+            return response()->json(['token' => $token, 200]);
         }else{
-            return response()->json(['Message' => 'User not found'], 401);
+            return response()->json(['Message' => 'Unauthorized'], 401);
         };
     }
 
