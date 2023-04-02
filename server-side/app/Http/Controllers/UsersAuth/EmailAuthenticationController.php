@@ -16,19 +16,16 @@ class EmailAuthenticationController extends Controller implements AuthInterface
 {
     static public function register(Request $request)  :? JsonResponse
     {
-        $formFields = Validator::make($request->all(), [
-            'name' => ['required', 'min:4', 'unique:macro_users.users'],
-            'email' => ['required', 'email', 'unique:macro_users.users'],
-            'password' => ['required', 'min:8','regex:/^(?=.*[a-z])(?=.*[A-Z])/']
+        $formFields = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:6',
         ]);
-        
-        // Hash the password 
-        $formFields['password'] = bcrypt($formFields['password']);
         // Create user  and establich database connection 
 
         $user = DB::connection('macro_users')->transaction(function () use ($formFields) {
             $user = User::create([
-                'username' => $formFields['username'],
+                'name' => $formFields['name'],
                 'email' => $formFields['email'],
                 'password' => Hash::make($formFields['password']),
             ]);
