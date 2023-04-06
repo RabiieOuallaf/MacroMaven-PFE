@@ -1,7 +1,7 @@
 
 import Authentification from './components/Authentification'
 import { createBrowserRouter, createRoutesFromElements,Route,  Outlet, RouterProvider } from 'react-router-dom';
-import RegisterPage from './components/RegisterPage';
+import RegisterPage from './components/LoginPage';
 
 
 export default function App() {
