@@ -1,8 +1,8 @@
 
 import Authentification from './components/Authentification'
 import { createBrowserRouter, createRoutesFromElements,Route,  Outlet, RouterProvider } from 'react-router-dom';
-import RegisterPage from './components/LoginPage';
-
+import RegisterPage from './components/RegisterPage';
+import LoginPage from './components/LoginPage';
 
 export default function App() {
   const router = createBrowserRouter(
@@ -10,7 +10,8 @@ export default function App() {
       
       <Route >
         <Route  index element={<Authentification />}/>
-        <Route path='/register' element={<RegisterPage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/register' element={<RegisterPage />}/>
       </Route>
     )
   )
