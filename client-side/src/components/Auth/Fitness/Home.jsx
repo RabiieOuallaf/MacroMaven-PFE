@@ -1,10 +1,11 @@
 import React from "react";
+import Sidebar from "../utils/Sidebar";
 
 
 const HomePage = () => {
     return(
-        <div>
-            That's the HomePage page :) 
+        <div className="bg-black h-screen">
+            <Sidebar />
         </div>
     )
 }

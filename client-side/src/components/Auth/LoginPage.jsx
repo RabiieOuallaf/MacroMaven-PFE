@@ -12,18 +12,23 @@ function LoginPage() {
             <div className="container bg-gradient-to-r from-[#D8D5D6] to-gray-500 w-[75%] h-[90%] flex rounded-3xl p-5">
                 <div className="register-form w-[70%] flex justify-center items-center">
                     <form action="">
+                    {/*  headers */}
 
                         <div className="user-greeting text-5xl font-bold mb-20">
                             <h2 className='text-white '>Welcome <span className='text-blue-700'>back</span></h2>
                         </div>
+                    {/* == User name input section == */}
 
-                        <div className="user-section my-4 mx-12 flex justify-center my-12 ">
+                        <div className="user-section my-4 mx-12 flex justify-center my-10 ">
                             <input type="text" placeholder='Rabie Ouallaf' className='w-72 h-10 rounded-xl p-5 absolute text-center' />
                             <FontAwesomeIcon icon={faUser} className='relative top-3 right-32'/>
 
                         </div>
 
-                        <div className="password-section my-4 mx-12 flex justify-center my-12">
+                    {/* == User password input section == */}
+
+
+                        <div className="password-section my-4 mx-12 flex justify-center my-10">
                             <input type="password" placeholder='*********************************' className='w-72 h-10 rounded-xl p-5 absolute text-center' />
                             <FontAwesomeIcon icon={faLock} className='relative top-3 right-32'/>
                         </div>
