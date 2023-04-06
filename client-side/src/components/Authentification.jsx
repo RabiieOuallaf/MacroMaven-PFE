@@ -1,5 +1,6 @@
 import React from "react";
 import googleIcon from '../icons/googleIcon.png';
+import { Link } from "react-router-dom";
 
 function Authentification() {
     
@@ -16,7 +17,7 @@ function Authentification() {
             {/* Login button */}
             <div className="loginButton flex flex-col gap-3">
                 <button className="w-52 rounded-md p-1 text-white bg-blue-600 shadow-blue-500/50 ">Login</button>
-                <span className="text-white text-sm">You don't have an account?<a href="/register" className="text-blue-500 drop-shadow-2xl ">Register</a></span>
+                <span className="text-white text-sm">You don't have an account?  <Link to="register" className="text-blue-500"> Register </Link></span>
             </div>
         </section>
     )
