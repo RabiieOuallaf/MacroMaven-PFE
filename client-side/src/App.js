@@ -1,8 +1,9 @@
 
-import Authentification from './components/Authentification'
+import Authentification from './components/Auth/Authentification'
 import { createBrowserRouter, createRoutesFromElements,Route,  Outlet, RouterProvider } from 'react-router-dom';
-import RegisterPage from './components/RegisterPage';
-import LoginPage from './components/LoginPage';
+import RegisterPage from './components/Auth/RegisterPage';
+import LoginPage from './components/Auth/LoginPage';
+import HomePage from './components/Auth/Fitness/Home';
 
 export default function App() {
   const router = createBrowserRouter(
@@ -12,6 +13,7 @@ export default function App() {
         <Route  index element={<Authentification />}/>
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />}/>
+        <Route path='/home' element={<HomePage />} />
       </Route>
     )
   )

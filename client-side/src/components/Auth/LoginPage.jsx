@@ -1,9 +1,10 @@
 import React from 'react';
-import loginBg from '../images/authentificationPages/loginBg.png';
+import loginBg from '../../images/authentificationPages/loginBg.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faLock, faUser, faEnvelope} from '@fortawesome/free-solid-svg-icons'
+import {faLock, faUser} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
-function RegisterPage() {
+
+function LoginPage() {
 
     return (
         <section className='w-screen h-screen bg-slate-950 flex flex-row justify-center items-center  gap-6 '>
@@ -13,20 +14,14 @@ function RegisterPage() {
                     <form action="">
 
                         <div className="user-greeting text-5xl font-bold mb-20">
-                            <h2 className='text-white text-center'>Join <span className='text-blue-700'>Us</span></h2>
+                            <h2 className='text-white '>Welcome <span className='text-blue-700'>back</span></h2>
                         </div>
 
                         <div className="user-section my-4 mx-12 flex justify-center my-10 ">
                             <input type="text" placeholder='Rabie Ouallaf' className='w-72 h-10 rounded-xl p-5 absolute text-center' />
                             <FontAwesomeIcon icon={faUser} className='relative top-3 right-32'/>
-                        </div>
-
-                        <div className="email-section my-4 mx-12 flex justify-center my-10 ">
-                            <input type="email" placeholder='rabie@gmail.com' className='w-72 h-10 rounded-xl p-5 absolute text-center' />
-                            <FontAwesomeIcon icon={faEnvelope} className='relative top-3 right-32'/>
 
                         </div>
-                        
 
                         <div className="password-section my-4 mx-12 flex justify-center my-10">
                             <input type="password" placeholder='*********************************' className='w-72 h-10 rounded-xl p-5 absolute text-center' />
@@ -34,8 +29,8 @@ function RegisterPage() {
                         </div>
 
                         <div className='my-4 mx-20 flex justify-center flex-col '>
-                            <button className='text-white w-48 p-1 bg-blue-600 rounded-lg hover:bg-blue-500 duration-500 ease-in-out' >Register</button>
-                            <span className="text-white text-sm">You have an account?  <Link to="/login" className="text-blue-500"> Login </Link></span>
+                            <button className='text-white w-48 p-1 bg-blue-600 rounded-lg hover:bg-blue-500 duration-500 ease-in-out' >Login</button>
+                            <span className="text-white text-sm">You don't have an account?  <Link to="/register" className="text-blue-500"> Register </Link></span>
 
                         </div>
 
@@ -52,4 +47,4 @@ function RegisterPage() {
     )
 }
 
-export default RegisterPage
+export default LoginPage

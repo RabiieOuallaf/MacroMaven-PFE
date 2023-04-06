@@ -1,5 +1,5 @@
 import React from "react";
-import googleIcon from '../icons/googleIcon.png';
+import googleIcon from '../../icons/googleIcon.png';
 import { Link } from "react-router-dom";
 
 function Authentification() {
