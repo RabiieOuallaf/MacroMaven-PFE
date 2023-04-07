@@ -19,7 +19,7 @@ function RegisterPage() {
                         {/* == User name input section == */}
 
 
-                        <div className="user-section my-4 mx-12 flex justify-center my-10 ">
+                        <div className="user-section my-4 mx-12 flex justify-center my-12 ">
                             <input type="text" placeholder='Rabie Ouallaf' className='w-72 h-10 rounded-xl p-5 absolute text-center' />
                             <FontAwesomeIcon icon={faUser} className='relative top-3 right-32' />
                         </div>
@@ -27,7 +27,7 @@ function RegisterPage() {
                         {/* == User email input section == */}
 
 
-                        <div className="email-section my-4 mx-12 flex justify-center my-10 ">
+                        <div className="email-section my-4 mx-12 flex justify-center my-12 ">
                             <input type="email" placeholder='rabie@gmail.com' className='w-72 h-10 rounded-xl p-5 absolute text-center' />
                             <FontAwesomeIcon icon={faEnvelope} className='relative top-3 right-32' />
 
@@ -37,7 +37,7 @@ function RegisterPage() {
 
 
 
-                        <div className="password-section my-4 mx-12 flex justify-center my-10">
+                        <div className="password-section my-4 mx-12 flex justify-center my-12">
                             <input type="password" placeholder='*********************************' className='w-72 h-10 rounded-xl p-5 absolute text-center' />
                             <FontAwesomeIcon icon={faLock} className='relative top-3 right-32' />
                         </div>
