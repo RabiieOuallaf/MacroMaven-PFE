@@ -8,10 +8,10 @@ function ActivityDetails(props) {
                 {/* == activity type == */}
                 <div className="activity-type flex gap-4 cursor-pointer">
 
-                    <div className="activity-circle flex items-center justify-center border border-white w-16 h-16 rounded-full text-center shadow-sm shadow-white">
+                    <div className="activity-circle flex items-center justify-center border border-white w-14 h-14 rounded-full text-center shadow-sm shadow-white">
                         {/* == activity icon == */}
                         <div className="acitivty-image ">
-                            <img src={props.img} alt="Running icon" className='w-6 ' />
+                            <img src={props.img} alt="Running icon" className='w-4 ' />
                         </div>
 
                     </div>
