@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../utils/Sidebar";
+import Sidebar from "../utils/main/Sidebar";
 import DailyActivity from "../utils/dailyActivity/DailyActivity";
 
 const HomePage = () => {
