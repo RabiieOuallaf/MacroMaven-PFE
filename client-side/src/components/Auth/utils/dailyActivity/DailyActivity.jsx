@@ -8,7 +8,7 @@ function DailyActivity() {
     { name: 'Duration', goal: '1h:13min', img: durationIcon }
   ]
   return (
-    <div className='daily-activity ml-[7%] bg-blue-500 w-[45%] h-[33%] shadow-sm shadow-blue-500'>
+    <div className='daily-activity ml-[7%] bg-blue-500 w-[55%] h-[33%] shadow-sm shadow-blue-500'>
       {/* == activity name == */}
       <div className="activity-name">
         <h2 className='text-white text-3xl font-semibold ml-10 p-4'> <span>🌄</span> Morning walk</h2>

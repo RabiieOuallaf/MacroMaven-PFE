@@ -9,7 +9,7 @@ function Nutrition() {
 
     ]
     return (
-        <div className='Nutrition ml-[7%] bg-gray-300 w-[44%] h-[17%]  '>
+        <div className='Nutrition ml-[7%] bg-gray-300 w-[54%] h-[17%]  '>
 
             {
                 recepeis.map((recepie) => (
