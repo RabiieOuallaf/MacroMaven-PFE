@@ -7,16 +7,16 @@ import Quote from "../utils/quotes/Quote";
 
 const HomePage = () => {
     return (
-        <div className="h-screen flex">
+        <div className="h-screen w-full grid grid-rows-1 grid-cols-2">
             {/* == The sidebar == */}
             <Sidebar />
-            <div className="first-half h-full w-full ">
+            <div className="first-half h-full w-full ml-[7%]">
                 {/* == daily activity == */}
                 <DailyActivity />
                 {/* == diet == */}
                 <Diet />
                 {/* == nutrition == */}
-                <Nutrition className="order-last" />
+                <Nutrition />
             </div>
 
             <div className="second-half">

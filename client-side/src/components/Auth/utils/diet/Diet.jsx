@@ -10,7 +10,7 @@ import MacrosLine from './MacrosLine';
 function diet() {
     
     return (
-        <div className='diet ml-[7%] bg-slate-900 w-[54%] h-[50%] flex justify-center'>
+        <div className='diet bg-slate-900 w-full h-[50%] flex justify-center'>
             <div className="diet-container flex flex-col justify-center w-full h-full">
 
             <MacrosLine 

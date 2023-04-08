@@ -4,7 +4,7 @@ function Recepie(props) {
     
     return (
         <div>
-            <div className='Recepie h-[50%] flex justify-between items-center'>
+            <div className='Recepie h-[50%] w-full flex justify-between items-center ml-[2.9%]'>
                 <div className="recepie-informations flex gap-2 items-center mx-8 my-1">
                     {/* == Recepie Image == */}
                     <img src={props.img} alt="recepie image" className='w-10' />
