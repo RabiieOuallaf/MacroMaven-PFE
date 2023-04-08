@@ -10,7 +10,7 @@ const HomePage = () => {
         <div className="h-screen w-full grid grid-rows-1 grid-cols-2">
             {/* == The sidebar == */}
             <Sidebar />
-            <div className="first-half h-full w-full ml-[7%]">
+            <div className="first-half w-[91%] h-full ml-[7%] ">
                 {/* == daily activity == */}
                 <DailyActivity />
                 {/* == diet == */}

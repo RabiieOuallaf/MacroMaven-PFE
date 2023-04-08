@@ -2,7 +2,7 @@ import React from 'react';
 
 function ActivityDetails(props) {
     return (
-        <div>
+        <>
             {/* == activity description == */}
             <div className="activity-description-container flex justify-center items-center gap-20 ">
                 {/* == activity type == */}
@@ -22,7 +22,7 @@ function ActivityDetails(props) {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
