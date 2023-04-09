@@ -5,6 +5,7 @@ import RegisterPage from './components/Auth/RegisterPage';
 import LoginPage from './components/Auth/LoginPage';
 import HomePage from './components/Auth/Fitness/Home';
 import BmiCalculator from './components/Auth/Fitness/BmiCalculator';
+import NutritionSearchEngine from './components/Auth/Fitness/NutritionSearchEngine';
 
 export default function App() {
   const router = createBrowserRouter(
@@ -16,6 +17,8 @@ export default function App() {
         <Route path='/register' element={<RegisterPage />}/>
         <Route path='/home' element={<HomePage />} />
         <Route path='/bmicalculator' element={<BmiCalculator />} />
+        <Route path='/nutritionsearch' element={<NutritionSearchEngine />} />
+
       
       </Route>
     )
