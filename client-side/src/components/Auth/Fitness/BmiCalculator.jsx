@@ -59,7 +59,7 @@ function BmiCalculator() {
 
                 </div>
 
-                <div className="height-weight-range w-[80%]">
+                <div className="height-weight-range w-[80%] flex flex-col gap-12">
                     {rangeData.map((range,index) => (
                         <Range
                             index={index}
@@ -71,6 +71,10 @@ function BmiCalculator() {
                             updateRangeValue={() => updateRangeValue(index)}
                         />
                     ))}
+                </div>
+
+                <div className="calculate-bmi-button">
+                    <button className='w-32 p-2 rounded-md cursor-pointer text-white bg-blue-600 hover:bg-blue-700 duration-200 ease-in-out '>Calculate bmi</button>
                 </div>
             </div>
         </div>
