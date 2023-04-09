@@ -83,7 +83,7 @@ function BmiCalculator() {
                 </div>
 
                 <div className="calculate-bmi-button absolute end-1/3 bottom-40">
-                    <button className={`w-32 p-2 rounded-md cursor-pointer text-white bg-${gender == 'male' ? 'blue-600' : 'pink-400'} hover:bg-${gender == 'male' ? 'blue-600' : 'pink-400'} duration-200 ease-in-out`} >Calculate bmi</button>
+                    <button className={`w-32 p-2 rounded-md cursor-pointer text-white bg-${gender == 'male' ? 'blue-600' : 'pink-400'} hover:bg-${gender == 'male' ? 'blue-600' : 'pink-500'} duration-200 ease-in-out`} >Calculate bmi</button>
                 </div>
             </div>
         </div>
