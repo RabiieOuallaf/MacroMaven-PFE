@@ -7,6 +7,31 @@ import Range from '../utils/fitness/Range';
 
 
 function BmiCalculator() {
+    const rangeData = [
+        {
+            rangeType: 'Height',
+            primaryMetric: 'cm',
+            secondMetric: 'ft',
+            chosenMetric: 'cm',
+            maxValue: '205',
+            minValue: '115'
+        },
+        {
+            rangeType: 'Weight',
+            primaryMetric: 'kg',
+            secondMetric: 'lbs',
+            chosenMetric: 'kg',
+            maxValue: '200',
+            minValue: '25'
+        }
+        
+    ];
+    const updateRangeValue = (index) => {
+        const currentValue = document.getElementById(`range-${index}`).value;
+        const ValurProvider = document.getElementById(`range-value-${index}`);
+        console.log(currentValue)
+        ValurProvider.textContent = currentValue;
+    }
     return (
         <div className='h-screen w-full bg-slate-900'>
             {/* == Image container == */}
@@ -21,14 +46,13 @@ function BmiCalculator() {
                     {/* Male button*/}
                     <div className="male-button">
                         <button className='w-36 p-4 text-white rounded-md bg-blue-600 hover:bg-blue-700 duration-200 ease-in flex items-center justify-evenly'>
-                            <img src={male} alt='male icon' className='w-6'/> <span className='text-2xl text-center font-semibold'>Male</span>
+                            <img src={male} alt='male icon' className='w-6' /> <span className='text-2xl text-center font-semibold'>Male</span>
                         </button>
                     </div>
                     {/* femalte button*/}
                     <div className="female-button">
-
-                    <button className='w-36 p-4 text-white rounded-md bg-pink-400 hover:bg-pink-500 duration-200 ease-in flex items-center justify-evenly'>
-                            <img src={female} alt='male icon' className='w-6'/> <span className='text-2xl text-center font-semibold'>Female</span>
+                        <button className='w-36 p-4 text-white rounded-md bg-pink-400 hover:bg-pink-500 duration-200 ease-in flex items-center justify-evenly'>
+                            <img src={female} alt='male icon' className='w-6' /> <span className='text-2xl text-center font-semibold'>Female</span>
                         </button>
                     </div>
 
@@ -36,7 +60,17 @@ function BmiCalculator() {
                 </div>
 
                 <div className="height-weight-range w-[80%]">
-                    <Range />
+                    {rangeData.map((range,index) => (
+                        <Range
+                            index={index}
+                            rangeType={range.rangeType}
+                            primaryMetric={range.primaryMetric}
+                            secondMetric={range.secondMetric}
+                            chosenMetric={range.chosenMetric}
+                            maxValue={range.maxValue}
+                            updateRangeValue={() => updateRangeValue(index)}
+                        />
+                    ))}
                 </div>
             </div>
         </div>
