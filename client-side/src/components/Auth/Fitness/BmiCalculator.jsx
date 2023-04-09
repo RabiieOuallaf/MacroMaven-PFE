@@ -7,7 +7,7 @@ import Range from '../utils/fitness/Range';
 
 
 function BmiCalculator() {
-    const [gender, setGender] = useState('female');
+    const [gender, setGender] = useState('male');
     const rangeData = [
         {
             rangeType: 'Height',
@@ -34,8 +34,8 @@ function BmiCalculator() {
         ValurProvider.textContent = currentValue;
     }
 
-    const changeDefaultGender = (gender) => {
-        setGender(gender);
+    const changeDefaultGender = () => {
+        gender == 'male' ? setGender('female') : setGender('male');
     }    
     
 
@@ -51,13 +51,13 @@ function BmiCalculator() {
 
                 <div className="gender w-[60%] my-10 flex justify-between">
                     {/* Male button*/}
-                    <div className="male-button" onClick={() => changeDefaultGender('male')}>
+                    <div className="male-button" onClick={changeDefaultGender}>
                         <button className='w-36 p-4 text-white rounded-md bg-blue-600 hover:bg-blue-700 duration-200 ease-in flex items-center justify-evenly'>
                             <img src={male} alt='male icon' className='w-6' /> <span className='text-2xl text-center font-semibold'>Male</span>
                         </button>
                     </div>
                     {/* femalte button*/}
-                    <div className="female-button" onClick={() => changeDefaultGender('female')}>
+                    <div className="female-button" onClick={changeDefaultGender}>
                         <button className='w-36 p-4 text-white rounded-md bg-pink-400 hover:bg-pink-500 duration-200 ease-in flex items-center justify-evenly'>
                             <img src={female} alt='male icon' className='w-6' /> <span className='text-2xl text-center font-semibold'>Female</span>
                         </button>
