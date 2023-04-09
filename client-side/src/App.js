@@ -4,6 +4,7 @@ import { createBrowserRouter, createRoutesFromElements,Route,  Outlet, RouterPro
 import RegisterPage from './components/Auth/RegisterPage';
 import LoginPage from './components/Auth/LoginPage';
 import HomePage from './components/Auth/Fitness/Home';
+import BmiCalculator from './components/Auth/Fitness/BmiCalculator';
 
 export default function App() {
   const router = createBrowserRouter(
@@ -14,6 +15,8 @@ export default function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />}/>
         <Route path='/home' element={<HomePage />} />
+        <Route path='/bmicalculator' element={<BmiCalculator />} />
+      
       </Route>
     )
   )
