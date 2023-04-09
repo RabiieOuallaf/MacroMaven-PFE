@@ -40,7 +40,7 @@ function BmiCalculator() {
                 <img src={bmiResultBg} alt="bmi result blue-to-white background" className='w-[80%] h-[25%] absolute bottom-0' />
             </div>
 
-            <div className="bmi-calculator-container flex flex-col gap-10 w-[50%] items-center">
+            <div className="bmi-calculator-container flex flex-col gap-10 w-[50%] mx-10 items-center">
 
                 <div className="gender w-[60%] my-10 flex justify-between">
                     {/* Male button*/}
@@ -59,7 +59,7 @@ function BmiCalculator() {
 
                 </div>
 
-                <div className="height-weight-range w-[80%] flex flex-col gap-12">
+                <div className="height-weight-range w-[90%] flex flex-col gap-12">
                     {rangeData.map((range,index) => (
                         <Range
                             index={index}
@@ -73,7 +73,7 @@ function BmiCalculator() {
                     ))}
                 </div>
 
-                <div className="calculate-bmi-button">
+                <div className="calculate-bmi-button absolute end-1/3 bottom-40">
                     <button className='w-32 p-2 rounded-md cursor-pointer text-white bg-blue-600 hover:bg-blue-700 duration-200 ease-in-out '>Calculate bmi</button>
                 </div>
             </div>

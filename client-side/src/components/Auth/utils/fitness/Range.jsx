@@ -17,7 +17,7 @@ function Range(props) {
 
                 </div>
                 {/* Range value == */}
-                <div className="range-value flex gap-1 text-sm border-b-[1px] ">
+                <div className="range-value flex gap-1 text-sm border-b-[1px] absolute end-1/3 ">
                     <h5 id={`range-value-${props.index}`}></h5>
                         <span className='text-blue-700'>{props.chosenMetric}</span>
                 </div>
