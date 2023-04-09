@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import sideHero from '../../../images/fitness/sideHero.png';
 import bmiResultBg from '../../../images/fitness/bmiResultBg.png';
 import male from '../../../icons/male.png';
@@ -7,6 +7,7 @@ import Range from '../utils/fitness/Range';
 
 
 function BmiCalculator() {
+    const [gender, setGender] = useState('female');
     const rangeData = [
         {
             rangeType: 'Height',
@@ -32,6 +33,12 @@ function BmiCalculator() {
         console.log(currentValue)
         ValurProvider.textContent = currentValue;
     }
+
+    const changeDefaultGender = (gender) => {
+        setGender(gender);
+    }    
+    
+
     return (
         <div className='h-screen w-full bg-slate-900'>
             {/* == Image container == */}
@@ -44,13 +51,13 @@ function BmiCalculator() {
 
                 <div className="gender w-[60%] my-10 flex justify-between">
                     {/* Male button*/}
-                    <div className="male-button">
+                    <div className="male-button" onClick={() => changeDefaultGender('male')}>
                         <button className='w-36 p-4 text-white rounded-md bg-blue-600 hover:bg-blue-700 duration-200 ease-in flex items-center justify-evenly'>
                             <img src={male} alt='male icon' className='w-6' /> <span className='text-2xl text-center font-semibold'>Male</span>
                         </button>
                     </div>
                     {/* femalte button*/}
-                    <div className="female-button">
+                    <div className="female-button" onClick={() => changeDefaultGender('female')}>
                         <button className='w-36 p-4 text-white rounded-md bg-pink-400 hover:bg-pink-500 duration-200 ease-in flex items-center justify-evenly'>
                             <img src={female} alt='male icon' className='w-6' /> <span className='text-2xl text-center font-semibold'>Female</span>
                         </button>
@@ -69,12 +76,14 @@ function BmiCalculator() {
                             chosenMetric={range.chosenMetric}
                             maxValue={range.maxValue}
                             updateRangeValue={() => updateRangeValue(index)}
+                            gender={gender}
+                            
                         />
                     ))}
                 </div>
 
                 <div className="calculate-bmi-button absolute end-1/3 bottom-40">
-                    <button className='w-32 p-2 rounded-md cursor-pointer text-white bg-blue-600 hover:bg-blue-700 duration-200 ease-in-out '>Calculate bmi</button>
+                    <button className={`w-32 p-2 rounded-md cursor-pointer text-white bg-${gender == 'male' ? 'blue-600' : 'pink-400'} hover:bg-${gender == 'male' ? 'blue-600' : 'pink-400'} duration-200 ease-in-out`} >Calculate bmi</button>
                 </div>
             </div>
         </div>

@@ -11,8 +11,8 @@ function Range(props) {
                     <h3 className='text-2xl font-semibold'>{props.rangeType}</h3>
                     {/* == Range metric == */}
                     <div className="range-metric flex gap-3 text-sm">
-                        <div className='cursor-pointer w-6 h-6  bg-blue-600 hover:bg-blue-700 duration-200 ease-in-out rounded-md text-center'>{props.primaryMetric}</div>
-                        <div className='cursor-pointer w-6 h-6  bg-blue-600 hover:bg-blue-700 duration-200 ease-in-out rounded-md text-center'>{props.secondMetric}</div>
+                        <div className={`cursor-pointer w-6 h-6  bg-${props.gender == 'male' ? 'blue-600' : 'pink-400'} hover:bg-${props.gender == 'male' ? 'blue-600' : 'pink-400'} duration-200 ease-in-out rounded-md text-center`}>{props.primaryMetric}</div>
+                        <div className={`cursor-pointer w-6 h-6  bg-${props.gender == 'male' ? 'blue-600' : 'pink-400'} hover:bg-${props.gender == 'male' ? 'blue-600' : 'pink-400'} duration-200 ease-in-out rounded-md text-center`}>{props.secondMetric} </div>
                     </div>
 
                 </div>
