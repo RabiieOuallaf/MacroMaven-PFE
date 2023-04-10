@@ -2,7 +2,7 @@ import React from 'react';
 import moroccanHrira from '../../../../icons/moroccanHrira.png'
 
 
-function NutritionSearchResults() {
+function NutritionSearchResults(props) {
     return (
         <div className='text-white Recepie p-4 w-[73%] flex justify-around items-center ml-[2.9%] bg-slate-500 hover:bg-slate-400 duration-300 ease-in-out'>
             {/* == Food image - name == */}
@@ -13,17 +13,17 @@ function NutritionSearchResults() {
 
             {/* == food calories == */}
             <div className="food-calories">
-                <h2 className='text-2xl'>550-kal</h2>
+                <h2 className='text-2xl'>{props.calories}-kal</h2>
             </div>
 
             {/* == food protien == */}
             <div className="food-calories">
-                <h2 className='text-2xl text-center'>14G/<br />PROTIEN</h2>
+                <h2 className='text-2xl text-center'>{props.protiens}G/<br />PROTIEN</h2>
             </div>
 
             {/* == food fat == */}
             <div className="food-calories">
-                <h2 className='text-2xl text-center'>24G/<br />FAT</h2>
+                <h2 className='text-2xl text-center'>{props.fat}G/<br />FAT</h2>
             </div>
         </div>
     )
