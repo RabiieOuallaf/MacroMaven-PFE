@@ -1,6 +1,6 @@
 import React from 'react'
-import macroMavenLogo from '../../../../icons/MacroMavenLogo.png';
-import doorIcon from '../../../../icons/doorIcon.png';
+import macroMavenLogo from '../../../icons/MacroMavenLogo.png';
+import doorIcon from '../../../icons/doorIcon.png';
 import { Link } from 'react-router-dom';
 
 function Navbar() {

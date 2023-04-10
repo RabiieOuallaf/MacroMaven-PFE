@@ -3,9 +3,10 @@ import Authentification from './components/Auth/Authentification'
 import { createBrowserRouter, createRoutesFromElements,Route,  Outlet, RouterProvider } from 'react-router-dom';
 import RegisterPage from './components/Auth/RegisterPage';
 import LoginPage from './components/Auth/LoginPage';
-import HomePage from './components/Auth/Fitness/Home';
-import BmiCalculator from './components/Auth/Fitness/BmiCalculator';
-import NutritionSearchEngine from './components/Auth/Fitness/NutritionSearchEngine';
+import HomePage from './components/Fitness/Home';
+import BmiCalculator from './components/Fitness/BmiCalculator';
+import NutritionSearchEngine from './components/Fitness/NutritionSearchEngine';
+import Profile from './components/Users/Profile';
 
 export default function App() {
   const router = createBrowserRouter(
@@ -18,7 +19,7 @@ export default function App() {
         <Route path='/home' element={<HomePage />} />
         <Route path='/bmicalculator' element={<BmiCalculator />} />
         <Route path='/nutritionsearch' element={<NutritionSearchEngine />} />
-
+        <Route path='/profile' element={<Profile />} /> 
       
       </Route>
     )

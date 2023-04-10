@@ -1,7 +1,7 @@
 import React from 'react';
 import ActivityDetails from './ActivityDetails';
-import runningIcon from '../../../../icons/runningIcon.png';
-import durationIcon from '../../../../icons/durationIcon.png';
+import runningIcon from '../../../icons/runningIcon.png';
+import durationIcon from '../../../icons/durationIcon.png';
 function DailyActivity() {
   const activities = [
     { name: 'Running', goal: '14KM', img: runningIcon },

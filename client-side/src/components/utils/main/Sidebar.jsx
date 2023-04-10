@@ -1,11 +1,11 @@
 import React from "react";
-import MacroMavenLogo from '../../../../icons/MacroMavenLogo.png';
-import usersIcon from '../../../../icons/usersIcon.png';
-import MainpageIcon from '../../../../icons/MainpageIcon.png';
-import BlogsIcon from '../../../../icons/BlogsIcon.png';
-import dietIcon from '../../../../icons/dietIcon.png';
-import chatIcon from '../../../../icons/chatIcon.png';
-import doorIconblack from '../../../../icons/doorIconblack.png';
+import MacroMavenLogo from '../../../icons/MacroMavenLogo.png';
+import usersIcon from '../../../icons/usersIcon.png';
+import MainpageIcon from '../../../icons/MainpageIcon.png';
+import BlogsIcon from '../../../icons/BlogsIcon.png';
+import dietIcon from '../../../icons/dietIcon.png';
+import chatIcon from '../../../icons/chatIcon.png';
+import doorIconblack from '../../../icons/doorIconblack.png';
 import { useNavigate } from 'react-router-dom';
 
 

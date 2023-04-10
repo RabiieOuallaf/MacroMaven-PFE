@@ -1,5 +1,5 @@
 import React from 'react';
-import moroccanHrira from '../../../../icons/moroccanHrira.png'
+import moroccanHrira from '../../../icons/moroccanHrira.png'
 
 
 function NutritionSearchResults(props) {

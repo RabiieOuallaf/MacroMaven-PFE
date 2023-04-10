@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import moroccanHrira from '../../../../icons/moroccanHrira.png'
+import moroccanHrira from '../../../icons/moroccanHrira.png'
 import Recepie from './Recepie';
 import axios from 'axios';
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import sideHero from '../../../images/fitness/sideHero.png';
-import bmiResultBg from '../../../images/fitness/bmiResultBg.png';
-import male from '../../../icons/male.png';
-import female from '../../../icons/female.png';
+import sideHero from '../../images/fitness/sideHero.png';
+import bmiResultBg from '../../images/fitness/bmiResultBg.png';
+import male from '../../icons/male.png';
+import female from '../../icons/female.png';
 import Range from '../utils/fitness/Range';
 
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import fireIcon from '../../../../icons/fireIcon.png';
-import wheatIcon from '../../../../icons/wheatIcon.png';
-import waterIcon from '../../../../icons/waterIcon.png';
-import protienIcon from '../../../../icons/protienIcon.png';
+import fireIcon from '../../../icons/fireIcon.png';
+import wheatIcon from '../../../icons/wheatIcon.png';
+import waterIcon from '../../../icons/waterIcon.png';
+import protienIcon from '../../../icons/protienIcon.png';
 import MacrosLine from './MacrosLine';
 
 
