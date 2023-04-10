@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function Navbar() {
     
   return (
-    <div className='flex justify-around text-white'>
+    <div className='flex justify-evenly text-white'>
         {/* == Logo == */}
         <div className="logo">
 
@@ -17,11 +17,11 @@ function Navbar() {
         <div className="navbar-options flex items-center">
             <ul className='flex gap-3 font-semibold'>
 
-                <li className='cursor-pointer'><Link to='/home'>Home</Link></li>
-                <li className='cursor-pointer'><Link to='/profile'>Profile</Link> </li>
-                <li className='cursor-pointer'><Link to='/chat'>Chat</Link></li>
-                <li className='cursor-pointer'><Link to='/nutritionsearch'>Nutrition</Link></li>
-                <li className='cursor-pointer'><Link to='/blogs'>Blogs</Link></li>
+                <li className='cursor-pointer hover:text-blue-500 duration-300'><Link to='/home'>Home</Link></li>
+                <li className='cursor-pointer hover:text-blue-500 duration-300'><Link to='/profile'>Profile</Link> </li>
+                <li className='cursor-pointer hover:text-blue-500 duration-300'><Link to='/chat'>Chat</Link></li>
+                <li className='cursor-pointer hover:text-blue-500 duration-300'><Link to='/nutritionsearch'>Nutrition</Link></li>
+                <li className='cursor-pointer hover:text-blue-500 duration-300'><Link to='/blogs'>Blogs</Link></li>
 
             </ul>
         </div>

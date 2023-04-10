@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import NutritionSearchResults from '../utils/nutrition/NutritionSearchResults'
 import axios from 'axios';
-import Navbar from '../utils/main/Navbar';
 
 function NutritionSearchEngine() {
   const apiKey = process.env.REACT_APP_NUTRITION_API_KEY
