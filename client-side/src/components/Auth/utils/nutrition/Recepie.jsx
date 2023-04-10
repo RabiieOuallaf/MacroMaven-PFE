@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Recepie(props) {
-    
+
     return (
         <div>
             <div className='Recepie h-[50%] w-full flex justify-between items-center ml-[2.9%]'>
@@ -11,10 +11,13 @@ function Recepie(props) {
                     {/* == Recepie name == */}
                     <h3 className='font-semibold text-lg font-semibold text-center '>{props.name}</h3>
                 </div>
-                <div className="recepie-calories mx-8">
+
                     {/* == Meal's calories == */}
+                <div className="recepie-calories mx-8">
                     <h3 className='text-center text-xl'>{props.calories}</h3>
                 </div>
+
+                
 
 
             </div>

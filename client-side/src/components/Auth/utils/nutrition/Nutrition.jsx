@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import moroccanHrira from '../../../../icons/moroccanHrira.png'
 import Recepie from './Recepie';
+import axios from 'axios';
 
 function Nutrition() {
+    
     const recepeis = [
         { name: 'moroccan Hrira', calories: '550-cal', img: moroccanHrira },
         { name: 'japanesse Ramen', calories: '590-cal', img: moroccanHrira }
