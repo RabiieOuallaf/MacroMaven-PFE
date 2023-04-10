@@ -22,13 +22,13 @@ const Sidebar = () => {
                 Navigate('/user');
                 break;
             case 'main':
-                Navigate('/main');
+                Navigate('/home');
                 break;
             case 'blogs':
                 Navigate('/blogs');
                 break;
             case 'diet':
-                Navigate('/diet');
+                Navigate('/nutritionsearch');
                 break;
             case 'chat':
                 Navigate('/chat');
@@ -43,9 +43,9 @@ const Sidebar = () => {
     // Map that contain icons data , just to ehance the quality of the code.
     const icons = [
         { id: 'users', src: usersIcon, alt: 'Two user icons' },
-        { id: 'main', src: MainpageIcon, alt: 'Min page icon' },
+        { id: 'home', src: MainpageIcon, alt: 'Min page icon' },
         { id: "blogs", src: BlogsIcon, alt: "blogs page icon" },
-        { id: "diet", src: dietIcon, alt: "diet page icon" },
+        { id: "nutritionsearch", src: dietIcon, alt: "diet page icon" },
         { id: "chat", src: chatIcon, alt: "chat page icon" },
         { id: "logout mt-16", src: doorIconblack, alt: "logout icon icon" }
 
