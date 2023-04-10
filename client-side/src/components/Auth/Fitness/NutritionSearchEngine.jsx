@@ -12,7 +12,7 @@ function NutritionSearchEngine() {
 
 
   useEffect(() => {
-    if (query) {
+    if (query !== '') {
       axios.get('https://api.nal.usda.gov/fdc/v1/foods/search', {
         params: {
           api_key: 'KiuHrYo0VNdxDaY06Ba9u7RxSbDLzwLBq81iKDxb',
@@ -21,7 +21,11 @@ function NutritionSearchEngine() {
       })
       .then(response => {
         setNutrition(response.data.foods[0]);
-        console.log(nutrition)
+        console.log(nutrition.description) // name
+        console.log(nutrition.foodNutrients[0].value) // protien
+        console.log(nutrition.foodNutrients[1].value)  // fat
+        console.log(nutrition.foodNutrients[3].value)  // KCAL
+
       })
       .catch(error => {
         console.log(error);
@@ -46,7 +50,7 @@ function NutritionSearchEngine() {
       <div className="search-input flex justify-center">
         <input 
           type="text" 
-          className='w-[70%] h-[32px] rounded-lg bg-inherit border border-2 border-white text-center' 
+          className='w-[70%] h-[32px] rounded-lg bg-inherit border border-2 border-white text-center text-white' 
           placeholder='searching for food nutrition ...' 
           onChange={handleInputChange} 
           value={query}  
@@ -61,9 +65,18 @@ function NutritionSearchEngine() {
       </div>
 
 
-      <div className="search-results flex justify-center my-10 w-screen">
-        {/* <NutritionSearchResults />  */}
-      </div>
+          <div className="search-results flex justify-center my-10 w-screen">
+            {
+              nutrition && (
+                <NutritionSearchResults 
+              name={nutrition.description}
+              calories={nutrition.foodNutrients[3].value} 
+              protiens={nutrition.foodNutrients[0].value} 
+              fat={nutrition.foodNutrients[1].value}
+            /> 
+              )
+            }
+          </div>
     </div>
   )
 }

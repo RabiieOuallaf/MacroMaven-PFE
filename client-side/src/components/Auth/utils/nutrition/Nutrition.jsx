@@ -4,7 +4,7 @@ import Recepie from './Recepie';
 import axios from 'axios';
 
 function Nutrition() {
-    
+
     const recepeis = [
         { name: 'moroccan Hrira', calories: '550-cal', img: moroccanHrira },
         { name: 'japanesse Ramen', calories: '590-cal', img: moroccanHrira }
@@ -15,7 +15,7 @@ function Nutrition() {
 
             {
                 recepeis.map((recepie) => (
-                    <Recepie name={recepie.name} calories={recepie.calories} img={recepie.img}/> 
+                    <Recepie name={recepie.name} calories={recepie.calories} img={recepie.img} />
                 ))
             }
 
