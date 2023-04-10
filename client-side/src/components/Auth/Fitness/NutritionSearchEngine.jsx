@@ -6,7 +6,7 @@ import NutritionSearchResults from '../utils/nutrition/NutritionSearchResults'
 import axios from 'axios';
 
 function NutritionSearchEngine() {
-
+  const apiKey = process.env.REACT_APP_NUTRITION_API_KEY
   const [nutrition, setNutrition] = useState('');
   const [query, setQuery] = useState('');
 
@@ -15,16 +15,13 @@ function NutritionSearchEngine() {
     if (query !== '') {
       axios.get('https://api.nal.usda.gov/fdc/v1/foods/search', {
         params: {
-          api_key: 'KiuHrYo0VNdxDaY06Ba9u7RxSbDLzwLBq81iKDxb',
+          api_key:apiKey,
           query: query,
         }
       })
       .then(response => {
         setNutrition(response.data.foods[0]);
-        console.log(nutrition.description) // name
-        console.log(nutrition.foodNutrients[0].value) // protien
-        console.log(nutrition.foodNutrients[1].value)  // fat
-        console.log(nutrition.foodNutrients[3].value)  // KCAL
+        console.log(nutrition)
 
       })
       .catch(error => {
@@ -67,14 +64,15 @@ function NutritionSearchEngine() {
 
           <div className="search-results flex justify-center my-10 w-screen">
             {
-              nutrition && (
+              nutrition && nutrition.foodNutrients.length > 3 && (
                 <NutritionSearchResults 
               name={nutrition.description}
               calories={nutrition.foodNutrients[3].value} 
               protiens={nutrition.foodNutrients[0].value} 
               fat={nutrition.foodNutrients[1].value}
             /> 
-              )
+              ) 
+              
             }
           </div>
     </div>
