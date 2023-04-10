@@ -1,5 +1,7 @@
 import React from 'react'
-import Sidebar from '../utils/main/Sidebar'
+import Sidebar from '../utils/main/Sidebar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 function NutritionSearchEngine() {
   return (
@@ -11,8 +13,8 @@ function NutritionSearchEngine() {
       </div>  
 
       <div className="search-input flex justify-center">
-      <input type="text" className='w-[70%] h-[32px] rounded-lg bg-inherit border border-2 border-white' />
-
+          <input type="text" className='w-[70%] h-[32px] rounded-lg bg-inherit border border-2 border-white text-center' placeholder='searching for food nutrition ...'/>
+          <FontAwesomeIcon icon={faSearch} size="lg" color="#fff" className='absolute end-[16.1%] top-[46%] hover:text-blue-400 duration-200 ease-in-out'/>
       </div>
     </div>
   )
