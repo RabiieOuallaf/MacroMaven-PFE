@@ -7,6 +7,7 @@ import HomePage from './components/Fitness/Home';
 import BmiCalculator from './components/Fitness/BmiCalculator';
 import NutritionSearchEngine from './components/Fitness/NutritionSearchEngine';
 import Profile from './components/Users/Profile';
+import Chat from './components/Users/Chat';
 
 export default function App() {
   const router = createBrowserRouter(
@@ -20,6 +21,7 @@ export default function App() {
         <Route path='/bmicalculator' element={<BmiCalculator />} />
         <Route path='/nutritionsearch' element={<NutritionSearchEngine />} />
         <Route path='/profile' element={<Profile />} /> 
+        <Route path='/chat' element={<Chat />} />
       
       </Route>
     )
