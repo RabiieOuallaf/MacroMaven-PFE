@@ -19,6 +19,7 @@ class EmailAuthenticationController extends Controller implements AuthInterface
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6',
+            'birthday' => 'required|date'
         ]);
         if($validator->fails()){
             return response()->json(['errors' => $validator->errors()], 400);

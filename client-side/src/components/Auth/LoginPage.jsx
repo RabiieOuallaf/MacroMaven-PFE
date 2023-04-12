@@ -11,7 +11,7 @@ function LoginPage() {
             {/*  == Register page form == */}
             <div className="container bg-gradient-to-r from-[#D8D5D6] to-gray-500 w-[75%] h-[90%] flex rounded-3xl p-5">
                 <div className="register-form w-[70%] flex justify-center items-center">
-                    <form action="">
+                    <form action="" className='flex flex-col justify-around'>
                     {/*  headers */}
 
                         <div className="user-greeting text-5xl font-bold mb-20">
