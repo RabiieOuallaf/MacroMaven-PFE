@@ -9,7 +9,7 @@ function Sidechat() {
         { optionName: 'Ai', icon: chatgpt }
     ]
     return (
-        <div className='bg-slate-950 w-[10%] h-[87.5%] flex flex-col gap-5 items-center absolute top-[12.5%]'>
+        <div className='bg-slate-950 w-[10%] h-[87.5%] flex flex-col gap-5 py-14 items-center absolute top-[12.5%]'>
             {chatOptions.map((chatOption) => (
                 <div className="chat-option flex justify-center items-center flex-row gap-4">
                     <img src={chatOption.icon} alt='chat icon' className='w-5'/>

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\UsersAuth;
 
-use Database\Factories\AuthFactory;
 use Illuminate\Http\Request;
 use App\Interfaces\AuthenticationServiceInterface as AuthInterface;
 use App\Http\Controllers\Controller;
@@ -38,6 +37,10 @@ class AuthController extends Controller implements AuthInterface
         }else{
             return response()->json(['message' => 'User not found'], 401);
         }
+    }
+
+    public function hello() {
+        return response()->json(['greeting' => 'hey <3']);
     }
 
     static public function deleteUser(User $user) :?JsonResponse
