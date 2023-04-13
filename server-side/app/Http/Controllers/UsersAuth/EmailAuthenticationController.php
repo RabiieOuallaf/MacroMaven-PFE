@@ -10,6 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class EmailAuthenticationController extends Controller implements AuthInterface
 {
@@ -30,8 +31,14 @@ class EmailAuthenticationController extends Controller implements AuthInterface
 
         $formFields['password'] = Hash::make($formFields['password']);
 
-        if(User::create($formFields)){
-            return response()->json(['Message' => 'User created seccussfully!'  ,201]);
+        $user = User::create($formFields);
+
+        if($user){
+           $token = JWTAuth::fromUser($user);
+            return response()->json([
+                'Message' => "User created seccussfully !", 
+                'Token' => $token 
+                ],201);
         }else{
             return response()->json(['Message' => "There's a problem with your registration request ! " , 401]);
         }

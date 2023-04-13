@@ -1,20 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import loginBg from '../../images/authentificationPages/loginBg.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 function RegisterPage() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [birthday, setBirthday] = useState(Date);
+    const navigate = useNavigate();
+    
+
+    useEffect( () =>  {
+        const isAuthenticated = !!localStorage.getItem('token');
+        if(isAuthenticated) {
+            navigate('/home');
+        }
+    }, [])
 
     const handleRegisterForm = (e) => {
         e.preventDefault();
         axios.post('http://127.0.0.1:8000/api/auth/register', { email, password, birthday, name, authenticationType: 'email' })
             .then((response) => {
-                console.log(response)
+                localStorage.setItem('token',response.data.message.original.Token);
+                navigate('/bmicalculator');
             })
             .catch((error => {
                 console.error(` The erorr is : ${error}`);
