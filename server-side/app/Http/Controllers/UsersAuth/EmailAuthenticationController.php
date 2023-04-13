@@ -59,14 +59,17 @@ class EmailAuthenticationController extends Controller implements AuthInterface
 
         $formFields = $credentials->validated();
 
-        if(Auth::attempt($formFields)){
+        $userAuthenticated = Auth::guard('api')->attempt($formFields);
+
+        if($userAuthenticated){
             $user = $request->user();
-            $token = $user->createToken('Access token')->accessToken; 
+            $token = JWTAuth::fromUser($user);
             return response()->json(['token' => $token, 200]);
         }else{
             return response()->json(['Message' => 'Unauthorized'], 401);
         };
     }
+    
 
 
 
