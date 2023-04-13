@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Fitness;
 
-use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class BMICalculatorController extends Controller
@@ -33,9 +34,7 @@ class BMICalculatorController extends Controller
 
         $bmi = $weight / ($height * $height);
         // Change bmi value based on user's gender
-        if($gender == 'male') {
-            $bmi *= 1.1;
-        }elseif ($gender == 'female') {
+        if($gender == 'female') {
             $bmi *= 0.9;
         }
 
@@ -43,3 +42,4 @@ class BMICalculatorController extends Controller
 
     }
 }
+
