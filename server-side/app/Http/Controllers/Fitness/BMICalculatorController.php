@@ -28,48 +28,61 @@ class BMICalculatorController extends Controller
         $data = $validatedData->validated(); // Get the validated data
 
 
-        $height = $data['height']/ 100; // Convert height from cm to m
+        $height = $data['height'] / 100; // Convert height from cm to m
         $weight = $data['weight'];
         $gender = $data['gender'];
 
 
         $bmi = $weight / ($height * $height);
-        // Change bmi value based on user's gender
-        if($gender == 'female') {
+        // Determine the BMI status and comment
+        list($bmiStatus, $bmiComment) = self::getBMIStatusAndComment($bmi, $gender);
+
+        // Prepare the results
+        $result = [
+            'bmi' => $bmi,
+            'status' => $bmiStatus,
+            'comment' => $bmiComment,
+        ];
+
+
+        return response()->json(['results' => $result]);
+    }
+
+    static private function getBMIStatusAndComment(float $bmi, string $gender): array
+    {
+        // Define constants for BMI categories
+        define('BMI_UNDERWEIGHT', 18.5);
+        define('BMI_NORMAL', 25);
+        define('BMI_OVERWEIGHT', 30);
+        define('BMI_OBESE_1', 35);
+        define('BMI_OBESE_2', 40);
+
+        // Change BMI value based on user's gender
+        if ($gender == 'female') {
             $bmi *= 0.9;
         }
 
-        $status = '';
-        $comment = '';
-
-        if ($bmi < 18.5) {
+        // Determine the BMI status and comment
+        if ($bmi < BMI_UNDERWEIGHT) {
             $status = 'Underweight';
             $comment = 'You need to eat more, skinny!';
-        } elseif ($bmi >= 18.5 && $bmi < 25) {
+        } elseif ($bmi < BMI_NORMAL) {
             $status = 'Normal weight';
             $comment = 'You are doing great, keep it up!';
-        } elseif ($bmi >= 25 && $bmi < 30) {
+        } elseif ($bmi < BMI_OVERWEIGHT) {
             $status = 'Overweight';
             $comment = 'Time to hit the gym!';
-        } elseif ($bmi >= 30 && $bmi < 35) {
+        } elseif ($bmi < BMI_OBESE_1) {
             $status = 'Obese (Class I)';
             $comment = 'No more TacoTaco for you!';
-        } elseif ($bmi >= 35 && $bmi < 40) {
+        } elseif ($bmi < BMI_OBESE_2) {
             $status = 'Obese (Class II)';
-            $comment = 'You need to make some serious lifestyle changes , Avoid afterTaste !';
+            $comment = 'You need to make some serious lifestyle changes, avoid afterTaste!';
         } else {
             $status = 'Obese (Class III)';
             $comment = 'You need to see a doctor ASAP!';
         }
-    
-        $result = [
-            'bmi' => $bmi,
-            'status' => $status,
-            'comment' => $comment,
-        ];
 
-        return response()->json(['results' => $result]);
-
+        return [$status, $comment];
     }
 }
-
