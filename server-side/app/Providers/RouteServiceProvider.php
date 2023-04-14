@@ -39,6 +39,10 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('auth')
                 ->group(base_path('routes/auth.php'));
+
+            
+            Route::middleware('fitness')
+            ->group(base_path('routes/fitness.php'));
         });
     }
 

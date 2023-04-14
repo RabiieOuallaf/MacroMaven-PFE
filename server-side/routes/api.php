@@ -22,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('auth')->group(function() {
         require __DIR__.'/auth.php';
 });
+
+Route::prefix('fitness')->group(function() {
+    require __DIR__.'/fitness.php';
+});
