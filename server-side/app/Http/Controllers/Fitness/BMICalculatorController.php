@@ -11,7 +11,7 @@ class BMICalculatorController extends Controller
 {
     // Calculate user's BMI in metric units(CM,KG)
 
-    static public function calculateBMIMetric(): JsonResponse
+    static public function calculateBMIMetric(Request $request): JsonResponse
     {
         // Validated the coming data
         $validatedData = Validator::make($request->all(), [
