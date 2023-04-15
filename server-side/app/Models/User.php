@@ -47,4 +47,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function bmis() {
+        return $this->hasMany(BMI::class);
+    }
 }

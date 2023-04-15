@@ -45,8 +45,11 @@ class BMICalculatorController extends Controller implements BMICalculatorService
             'comment' => $bmiComment,
         ];
 
+        if($result) {
+            
+            return response()->json(['results' => $result]);
 
-        return response()->json(['results' => $result]);
+        }
     }
 
     static private function getBMIStatusAndComment(float $bmi, string $gender): array

@@ -13,9 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('b_m_i_calculators', function (Blueprint $table) {
+        Schema::create('b_m_i_users', function (Blueprint $table) {
             $table->id();
+            $table->id('user_id');
+            $table->id('bmi_id');
+
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('bmi_id')->references('id')->on('bmis')->onDelete('cascade');
         });
     }
 
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('b_m_i_calculators');
+        Schema::dropIfExists('b_m_i_users');
     }
 };
