@@ -75,6 +75,14 @@ class InsertDietData extends Command
         $optifast->fats = 4;
         $optifast->calories = 800;
         $optifast->save();
+
+        $optifast = new Diet;
+        $optifast->name = 'Paleo';
+        $optifast->protein = 160;
+        $optifast->carbs = 260;
+        $optifast->fats = 110;
+        $optifast->calories = 2670;
+        $optifast->save();
     }
 
 }
