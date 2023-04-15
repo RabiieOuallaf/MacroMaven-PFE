@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Fitness;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\BMICalculatorServiceInterface;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class BMICalculatorController extends Controller
+class BMICalculatorController extends Controller implements BMICalculatorServiceInterface
 {
     // Calculate user's BMI in metric units(CM,KG)
 

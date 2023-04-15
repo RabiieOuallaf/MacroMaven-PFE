@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Fitness;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\DietSuggestionInterface;
 use App\Models\Diet;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 
-class DietSuggestionController extends Controller
+class DietSuggestionController extends Controller implements DietSuggestionInterface
 {
     // Validating the data    
     static public function DietDataValidator(Request $request): JsonResponse
