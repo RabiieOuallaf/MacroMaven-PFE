@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Fitness;
 
 use App\Http\Controllers\Controller;
 use App\Interfaces\BMICalculatorServiceInterface;
+use App\Models\BMI;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -19,9 +21,11 @@ class BMICalculatorController extends Controller implements BMICalculatorService
             'height' => 'required|numeric|min:1|max:205',
             'weight' => 'required|numeric|min:1|max:250',
             'gender' => 'required|in:male,female',
+            'user_id' => 'required'
         ]);
         // error handling 
         if ($validatedData->fails()) {
+            
             return response()->json(['eror' => $validatedData->erorrs(), 422]);
         }
 
@@ -46,8 +50,14 @@ class BMICalculatorController extends Controller implements BMICalculatorService
         ];
 
         if($result) {
-            
-            return response()->json(['results' => $result]);
+            $user = User::find($data['user_id']);
+            $BMIrecored = BMI::create([
+                'value' => $result['bmi'],
+                'bmiCategory' => $result['status'],
+                'user_id' => $data['user_id']
+            ]);
+            $user->bmi()->attach($BMIrecored->id, ['bmiCategory' => $result['status']]);
+                        return response()->json(['results' => $result]);
 
         }
     }

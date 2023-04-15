@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('b_m_i_s', function (Blueprint $table) {
             $table->id();
             $table->float('value');
+            $table->unsignedBigInteger('user_id');
+            $table->text('bmiCategory');
             $table->timestamps();
+
         });
     }
 

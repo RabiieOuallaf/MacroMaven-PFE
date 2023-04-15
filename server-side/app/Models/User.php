@@ -41,14 +41,12 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTIdentifier()
     {
         return $this->getKey();
-    }
-
+    }   
     public function getJWTCustomClaims()
     {
         return [];
     }
-
-    public function bmis() {
-        return $this->hasMany(BMI::class);
+    public function bmi() {
+        return $this->belongsToMany(BMI::class);
     }
 }
