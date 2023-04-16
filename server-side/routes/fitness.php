@@ -10,7 +10,12 @@ use Illuminate\Support\Facades\Route;
 Route::post('/diet' , [DietSuggestionController::class, 'DietDataValidator']);
 
 
-Route::post('/bmi', function(Request $request) {
+Route::post('/bmiCalculator', function(Request $request) {
     $bmiCalculator = FitnessFacade::calculateBMIMetric($request);
     return response()->json($bmiCalculator);
+});
+
+Route::post('/dietSuggestor', function(Request $request) {
+    $suggestedDiet = FitnessFacade::DietData($request);
+    return response()->json($suggestedDiet);
 });

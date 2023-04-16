@@ -7,5 +7,5 @@ use Illuminate\Http\JsonResponse;
 
 
 interface DietSuggestionInterface {
-    static public function DietDataValidator(Request $request) : JsonResponse;
+    static public function DietData(Request $request) : JsonResponse;
 }

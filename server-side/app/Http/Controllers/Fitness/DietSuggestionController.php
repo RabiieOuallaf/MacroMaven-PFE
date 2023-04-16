@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 
-class DietSuggestionController extends Controller implements DietSuggestionInterface
+class DietSuggestionController extends Controller
 {
     // Validating the data    
-    static public function DietDataValidator(Request $request): JsonResponse
+    static public function DietData(Request $request): JsonResponse
     {
         $validatedData = Validator::make($request->all(), [
             'id' => 'required',
@@ -44,7 +44,7 @@ class DietSuggestionController extends Controller implements DietSuggestionInter
         define('BMI_OBESE_1_DIET', 'Keto');
         define('BMI_OBESE_2_DIET', 'HMR');
         define('BMI_OBESE_3_DIET', 'Optifast');
-
+        
 
         $dietName = null;
         if ($bmiValue < 18.5) {
