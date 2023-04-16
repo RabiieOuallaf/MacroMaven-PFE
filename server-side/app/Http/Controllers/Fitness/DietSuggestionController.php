@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Fitness;
 use App\Http\Controllers\Controller;
 use App\Interfaces\DietSuggestionInterface;
 use App\Models\Diet;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -29,14 +30,14 @@ class DietSuggestionController extends Controller
         $userId = $data['id'];
         $bmiValue = $data['BMI'];
 
-        $result = self::DietSuggestor($bmiValue);
+        $result = self::DietSuggestor($bmiValue, $userId);
 
         return response()->json($result);
     }
 
     // Suggest a diet based on the user's BMI 
 
-    static private function DietSuggestor(float $bmiValue): JsonResponse
+    static private function DietSuggestor(float $bmiValue, int $userId): JsonResponse
     {
         define('BMI_UNDERWEIGHT_DIET', 'Paleo');
         define('BMI_NORMAL_DIET', 'Mediterranean');
@@ -66,6 +67,10 @@ class DietSuggestionController extends Controller
 
             $diet = Diet::where('name', $dietName)->first();
             if ($diet !== null) {
+
+                $user = User::find($userId);
+                $user->diet()->attach($diet->id);
+                
                 return response()->json(['Diet' => $diet]);
             }
         }
@@ -73,5 +78,5 @@ class DietSuggestionController extends Controller
         return response()->json(["Error occured : The bmi category isn't available at the moment, please try again later!"]);
     }
 
-    
+
 }
