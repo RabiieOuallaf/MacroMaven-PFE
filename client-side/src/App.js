@@ -8,6 +8,8 @@ import BmiCalculator from './components/Fitness/BmiCalculator';
 import NutritionSearchEngine from './components/Fitness/NutritionSearchEngine';
 import Profile from './components/Users/Profile';
 import Chat from './components/Users/Chat';
+// import BmiContext from "./Context/BmiDataContextProvider";
+
 
 export default function App() {
   const router = createBrowserRouter(
@@ -27,10 +29,11 @@ export default function App() {
     )
   )
   return (
-    <div className="App">
+      <div className="App">
         <RouterProvider router={router}/>
 
-    </div>
+      </div>
+    
   );
 }
 

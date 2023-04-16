@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Sidebar from "../utils/main/Sidebar";
 import DailyActivity from "../utils/dailyActivity/DailyActivity";
 import Diet from "../utils/diet/Diet";
 import Nutrition from "../utils/nutrition/Nutrition";
 import Quote from "../utils/quotes/Quote";
+// import BmiContext from "../../Context/BmiDataContextProvider";
 
 const HomePage = () => {
     return (
@@ -20,7 +21,7 @@ const HomePage = () => {
             </div>
 
             <div className="second-half">
-
+               
                 {/* == Quotes == */}  
                 <Quote />
             </div>
