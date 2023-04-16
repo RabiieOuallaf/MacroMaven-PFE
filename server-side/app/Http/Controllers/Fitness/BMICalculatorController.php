@@ -25,7 +25,7 @@ class BMICalculatorController extends Controller implements BMICalculatorService
         ]);
         // error handling 
         if ($validatedData->fails()) {
-            
+
             return response()->json(['eror' => $validatedData->erorrs(), 422]);
         }
 
@@ -49,7 +49,7 @@ class BMICalculatorController extends Controller implements BMICalculatorService
             'comment' => $bmiComment,
         ];
 
-        if($result) {
+        if ($result) {
             $user = User::find($data['user_id']);
             $BMIrecored = BMI::create([
                 'value' => $result['bmi'],
@@ -57,8 +57,7 @@ class BMICalculatorController extends Controller implements BMICalculatorService
                 'user_id' => $data['user_id']
             ]);
             $user->bmi()->attach($BMIrecored->id, ['bmiCategory' => $result['status']]);
-                        return response()->json(['results' => $result]);
-
+            return response()->json(['results' => $result]);
         }
     }
 
