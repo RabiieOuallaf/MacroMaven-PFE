@@ -15,8 +15,8 @@ class FitnessServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('fitness' , function($app) {
-            return new FitnessService
-        })
+            return new FitnessService;
+        });
     }
 
     /**
