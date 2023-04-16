@@ -11,6 +11,11 @@ function BmiCalculator() {
     const [gender, setGender] = useState('male');
     const [height, setHeight] = useState();
     const [weight, setWeight] = useState();
+    const [bmi , setBmi] = useState();
+    const [status, setStatus] = useState('');
+    const [comment, setComment] = useState('');
+
+
     const rangeData = [
         {
             rangeType: 'Height',
@@ -51,7 +56,10 @@ function BmiCalculator() {
 
         axios.post('http://127.0.0.1:8000/api/fitness/bmiCalculator', {height,weight,gender, user_id : 1})
         .then((response) => {
-            console.log(response.data.original.original.results);
+            setBmi(response.data.original.original.results.bmi);
+            setStatus(response.data.original.original.results.status);
+            setComment(response.data.original.original.results.comment);
+            console.log(`your bmi is ${bmi} and ${comment} , ${status}`)
         })
         .catch((error) => {
             console.log(error);
@@ -64,7 +72,15 @@ function BmiCalculator() {
             {/* == Image container == */}
             <div className="side-hero-img ">
                 <img src={sideHero} alt="bodybuilder lifting weights" className='h-screen absolute right-0 z-30' />
-                <img src={bmiResultBg} alt="bmi result blue-to-white background" className='w-[80%] h-[25%] absolute bottom-0' />
+                <div className="bmi-results">
+                    <img src={bmiResultBg} alt="bmi result blue-to-white background" className='w-[80%] h-[25%] absolute bottom-0' />
+                    {
+                        bmi && comment && status ? <div className='absolute bottom-0 m-9 cursor-pointer'>
+                            <h2 className='text-white text-[2.9rem] font-bold'>Your BMI is : {parseInt(bmi)}</h2>
+                            <h3 className='text-white text-2xl font-bold'>{status} , {comment}</h3>
+                        </div> : '' 
+                    }
+                </div>
             </div>
 
             <div className="bmi-calculator-container flex flex-col gap-10 w-[50%] mx-10 items-center">
