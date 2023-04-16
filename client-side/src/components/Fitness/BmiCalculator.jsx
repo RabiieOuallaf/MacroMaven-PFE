@@ -4,6 +4,7 @@ import bmiResultBg from '../../images/fitness/bmiResultBg.png';
 import male from '../../icons/male.png';
 import female from '../../icons/female.png';
 import Range from '../utils/fitness/Range';
+import axios from 'axios';
 
 
 function BmiCalculator() {
@@ -25,7 +26,7 @@ function BmiCalculator() {
             maxValue: '200',
             minValue: '25'
         }
-        
+
     ];
     const updateRangeValue = (index) => {
         const currentValue = document.getElementById(`range-${index}`).value;
@@ -36,8 +37,14 @@ function BmiCalculator() {
 
     const changeDefaultGender = () => {
         gender == 'male' ? setGender('female') : setGender('male');
-    }    
-    
+    }
+
+    const getUserBmi = (e) =>  {
+        e.preventDefault();
+
+        axios.post('http://127.0.0.1:8000/api/fitness/bmi');
+    }
+
 
     return (
         <div className='h-screen w-full bg-slate-900'>
@@ -67,7 +74,7 @@ function BmiCalculator() {
                 </div>
 
                 <div className="height-weight-range w-[90%] flex flex-col gap-12">
-                    {rangeData.map((range,index) => (
+                    {rangeData.map((range, index) => (
                         <Range
                             index={index}
                             rangeType={range.rangeType}
@@ -77,7 +84,7 @@ function BmiCalculator() {
                             maxValue={range.maxValue}
                             updateRangeValue={() => updateRangeValue(index)}
                             gender={gender}
-                            
+
                         />
                     ))}
                 </div>
