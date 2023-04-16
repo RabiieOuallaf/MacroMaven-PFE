@@ -49,4 +49,7 @@ class User extends Authenticatable implements JWTSubject
     public function bmi() {
         return $this->belongsToMany(BMI::class);
     }
+    public function diet() {
+        return $this->belongsToMany(Diet::class);
+    }
 }

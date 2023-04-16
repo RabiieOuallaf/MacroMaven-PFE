@@ -19,5 +19,9 @@ class Diet extends Model
         'calories'
     ];
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
     
 }
