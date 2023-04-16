@@ -72,4 +72,6 @@ class DietSuggestionController extends Controller
 
         return response()->json(["Error occured : The bmi category isn't available at the moment, please try again later!"]);
     }
+
+    
 }
