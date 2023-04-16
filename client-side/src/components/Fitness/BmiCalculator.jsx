@@ -9,6 +9,8 @@ import axios from 'axios';
 
 function BmiCalculator() {
     const [gender, setGender] = useState('male');
+    const [height, setHeight] = useState();
+    const [weight, setWeight] = useState();
     const rangeData = [
         {
             rangeType: 'Height',
@@ -31,7 +33,12 @@ function BmiCalculator() {
     const updateRangeValue = (index) => {
         const currentValue = document.getElementById(`range-${index}`).value;
         const ValurProvider = document.getElementById(`range-value-${index}`);
-        console.log(currentValue)
+        if(index == 0){
+            setHeight(currentValue);
+        }
+        if(index == 1){
+            setWeight(currentValue);
+        }
         ValurProvider.textContent = currentValue;
     }
 
@@ -42,7 +49,13 @@ function BmiCalculator() {
     const getUserBmi = (e) =>  {
         e.preventDefault();
 
-        axios.post('http://127.0.0.1:8000/api/fitness/bmi');
+        axios.post('http://127.0.0.1:8000/api/fitness/bmiCalculator', {height,weight,gender, user_id : 1})
+        .then((response) => {
+            console.log(response.data.original.original.results);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
 
 
@@ -90,7 +103,13 @@ function BmiCalculator() {
                 </div>
 
                 <div className="calculate-bmi-button absolute end-1/3 bottom-40">
-                    <button className={`w-32 p-2 rounded-md cursor-pointer text-white bg-${gender == 'male' ? 'blue-600' : 'pink-400'} hover:bg-${gender == 'male' ? 'blue-600' : 'pink-500'} duration-200 ease-in-out`} >Calculate bmi</button>
+                    <button 
+                        className={`w-32 p-2 rounded-md cursor-pointer text-white bg-${gender == 'male' ? 'blue-600' : 'pink-400'} hover:bg-${gender == 'male' ? 'blue-600' : 'pink-500'} duration-200 ease-in-out`} 
+                        onClick={getUserBmi}
+                    >
+                        Calculate bmi
+                        
+                    </button>
                 </div>
             </div>
         </div>

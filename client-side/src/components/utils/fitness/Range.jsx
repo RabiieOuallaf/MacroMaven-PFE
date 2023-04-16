@@ -25,7 +25,16 @@ function Range(props) {
             </div>
             {/* == Range input == */}
             <div className="range-input">
-                <input type="range" id={`range-${props.index}`} name={`${props.rangeType}-range`} min={props.minValue} max={props.maxValue} className='w-[135%]' onMouseMove={props.updateRangeValue}/>
+                <input 
+                    type="range" 
+                    id={`range-${props.index}`} 
+                    name={`${props.rangeType}-range`} 
+                    min={props.minValue} 
+                    max={props.maxValue} 
+                    className='w-[135%]' 
+                    onMouseMove={props.updateRangeValue}
+                                        
+                    />
             </div>
 
 

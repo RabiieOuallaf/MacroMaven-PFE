@@ -55,7 +55,7 @@ class BMICalculatorController extends Controller implements BMICalculatorService
                 'value' => $result['bmi'],
                 'bmiCategory' => $result['status'],
                 'user_id' => $data['user_id']
-            ]);
+            ]); 
             $user->bmi()->attach($BMIrecored->id, ['bmiCategory' => $result['status']]);
             return response()->json(['results' => $result]);
         }
