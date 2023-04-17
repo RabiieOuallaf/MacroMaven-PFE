@@ -5,7 +5,6 @@ import male from '../../icons/male.png';
 import female from '../../icons/female.png';
 import Range from '../utils/fitness/Range';
 import axios from 'axios';
-import BmiContext from '../../Context/BmiDataContextProvider';
 
 
 function BmiCalculator() {
@@ -60,6 +59,7 @@ function BmiCalculator() {
                 setBmi(response.data.original.original.results.bmi);
                 setStatus(response.data.original.original.results.status);
                 setComment(response.data.original.original.results.comment);
+
                 console.log(`your bmi is ${bmi} and ${comment} , ${status}`)
             })
             .catch((error) => {
@@ -69,71 +69,69 @@ function BmiCalculator() {
 
 
     return (
-        <BmiContext.Provider value={{bmi,comment,status}}>
 
-            <div className='h-screen w-full bg-slate-900'>
-                {/* == Image container == */}
-                <div className="side-hero-img ">
-                    <img src={sideHero} alt="bodybuilder lifting weights" className='h-screen absolute right-0 z-30' />
-                    <div className="bmi-results">
-                        <img src={bmiResultBg} alt="bmi result blue-to-white background" className='w-[80%] h-[25%] absolute bottom-0' />
-                        {
-                            bmi && comment && status ? <div className='absolute bottom-0 m-9 cursor-pointer'>
-                                <h2 className='text-white text-[2.9rem] font-bold'>Your BMI is : {parseInt(bmi)}</h2>
-                                <h3 className='text-white text-2xl font-bold'>{status} , {comment}</h3>
-                            </div> : ''
-                        }
-                    </div>
-                </div>
-
-                <div className="bmi-calculator-container flex flex-col gap-10 w-[50%] mx-10 items-center">
-
-                    <div className="gender w-[60%] my-10 flex justify-between">
-                        {/* Male button*/}
-                        <div className="male-button" onClick={changeDefaultGender}>
-                            <button className='w-36 p-4 text-white rounded-md bg-blue-600 hover:bg-blue-700 duration-200 ease-in flex items-center justify-evenly'>
-                                <img src={male} alt='male icon' className='w-6' /> <span className='text-2xl text-center font-semibold'>Male</span>
-                            </button>
-                        </div>
-                        {/* femalte button*/}
-                        <div className="female-button" onClick={changeDefaultGender}>
-                            <button className='w-36 p-4 text-white rounded-md bg-pink-400 hover:bg-pink-500 duration-200 ease-in flex items-center justify-evenly'>
-                                <img src={female} alt='male icon' className='w-6' /> <span className='text-2xl text-center font-semibold'>Female</span>
-                            </button>
-                        </div>
-
-
-                    </div>
-
-                    <div className="height-weight-range w-[90%] flex flex-col gap-12">
-                        {rangeData.map((range, index) => (
-                            <Range
-                                index={index}
-                                rangeType={range.rangeType}
-                                primaryMetric={range.primaryMetric}
-                                secondMetric={range.secondMetric}
-                                chosenMetric={range.chosenMetric}
-                                maxValue={range.maxValue}
-                                updateRangeValue={() => updateRangeValue(index)}
-                                gender={gender}
-
-                            />
-                        ))}
-                    </div>
-
-                    <div className="calculate-bmi-button absolute end-1/3 bottom-40">
-                        <button
-                            className={`w-32 p-2 rounded-md cursor-pointer text-white bg-${gender == 'male' ? 'blue-600' : 'pink-400'} hover:bg-${gender == 'male' ? 'blue-600' : 'pink-500'} duration-200 ease-in-out`}
-                            onClick={getUserBmi}
-                        >
-                            Calculate bmi
-
-                        </button>
-                    </div>
+        <div className='h-screen w-full bg-slate-900'>
+            {/* == Image container == */}
+            <div className="side-hero-img ">
+                <img src={sideHero} alt="bodybuilder lifting weights" className='h-screen absolute right-0 z-30' />
+                <div className="bmi-results">
+                    <img src={bmiResultBg} alt="bmi result blue-to-white background" className='w-[80%] h-[25%] absolute bottom-0' />
+                    {
+                        bmi && comment && status ? <div className='absolute bottom-0 m-9 cursor-pointer'>
+                            <h2 className='text-white text-[2.9rem] font-bold'>Your BMI is : {parseInt(bmi)}</h2>
+                            <h3 className='text-white text-2xl font-bold'>{status} , {comment}</h3>
+                        </div> : ''
+                    }
                 </div>
             </div>
 
-        </BmiContext.Provider>
+            <div className="bmi-calculator-container flex flex-col gap-10 w-[50%] mx-10 items-center">
+
+                <div className="gender w-[60%] my-10 flex justify-between">
+                    {/* Male button*/}
+                    <div className="male-button" onClick={changeDefaultGender}>
+                        <button className='w-36 p-4 text-white rounded-md bg-blue-600 hover:bg-blue-700 duration-200 ease-in flex items-center justify-evenly'>
+                            <img src={male} alt='male icon' className='w-6' /> <span className='text-2xl text-center font-semibold'>Male</span>
+                        </button>
+                    </div>
+                    {/* femalte button*/}
+                    <div className="female-button" onClick={changeDefaultGender}>
+                        <button className='w-36 p-4 text-white rounded-md bg-pink-400 hover:bg-pink-500 duration-200 ease-in flex items-center justify-evenly'>
+                            <img src={female} alt='male icon' className='w-6' /> <span className='text-2xl text-center font-semibold'>Female</span>
+                        </button>
+                    </div>
+
+
+                </div>
+
+                <div className="height-weight-range w-[90%] flex flex-col gap-12">
+                    {rangeData.map((range, index) => (
+                        <Range
+                            index={index}
+                            rangeType={range.rangeType}
+                            primaryMetric={range.primaryMetric}
+                            secondMetric={range.secondMetric}
+                            chosenMetric={range.chosenMetric}
+                            maxValue={range.maxValue}
+                            updateRangeValue={() => updateRangeValue(index)}
+                            gender={gender}
+
+                        />
+                    ))}
+                </div>
+
+                <div className="calculate-bmi-button absolute end-1/3 bottom-40">
+                    <button
+                        className={`w-32 p-2 rounded-md cursor-pointer text-white bg-${gender == 'male' ? 'blue-600' : 'pink-400'} hover:bg-${gender == 'male' ? 'blue-600' : 'pink-500'} duration-200 ease-in-out`}
+                        onClick={getUserBmi}
+                    >
+                        Calculate bmi
+
+                    </button>
+                </div>
+            </div>
+        </div>
+
 
     )
 }

@@ -8,15 +8,15 @@ import BmiCalculator from './components/Fitness/BmiCalculator';
 import NutritionSearchEngine from './components/Fitness/NutritionSearchEngine';
 import Profile from './components/Users/Profile';
 import Chat from './components/Users/Chat';
-// import BmiContext from "./Context/BmiDataContextProvider";
-
+import { useState } from 'react';
+import { BmiContext, BmiProvider } from './Contexts/BmiDataContextProvider';
 
 export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       
       <Route >
-        <Route  index element={<Authentification />}/>
+        <Route  index element={  <Authentification />}/>
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />}/>
         <Route path='/home' element={<HomePage />} />
@@ -28,12 +28,13 @@ export default function App() {
       </Route>
     )
   )
+
   return (
       <div className="App">
-        <RouterProvider router={router}/>
-
+          <BmiProvider>
+            <RouterProvider router={router}/>
+          </BmiProvider>
       </div>
-    
   );
 }
 

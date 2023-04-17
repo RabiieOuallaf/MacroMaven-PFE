@@ -23,7 +23,7 @@ class BMICalculatorController extends Controller implements BMICalculatorService
             'gender' => 'required|in:male,female',
             'user_id' => 'required'
         ]);
-        // error handling 
+        // error handling B
         if ($validatedData->fails()) {
 
             return response()->json(['eror' => $validatedData->erorrs(), 422]);
