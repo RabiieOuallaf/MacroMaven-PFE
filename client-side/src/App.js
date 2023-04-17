@@ -19,7 +19,15 @@ export default function App() {
         <Route  index element={  <Authentification />}/>
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />}/>
-        <Route path='/home' element={<HomePage />} />
+        <Route path='/home' element={
+        
+        <BmiProvider>
+          
+          <HomePage />
+        
+        </BmiProvider> 
+        
+        } />
         <Route path='/bmicalculator' element={<BmiCalculator />} />
         <Route path='/nutritionsearch' element={<NutritionSearchEngine />} />
         <Route path='/profile' element={<Profile />} /> 
@@ -31,9 +39,8 @@ export default function App() {
 
   return (
       <div className="App">
-          <BmiProvider>
-            <RouterProvider router={router}/>
-          </BmiProvider>
+          
+          <RouterProvider router={router}/>
       </div>
   );
 }

@@ -1,11 +1,9 @@
 import React from "react";
 import googleIcon from '../../icons/googleIcon.png';
 import { Link } from "react-router-dom";
-import { useStateContext } from "../../Contexts/BmiDataContextProvider";
 
 function Authentification() {
     
-    const {bmiData} = useStateContext();
 
     return (
 
@@ -15,7 +13,7 @@ function Authentification() {
                 <img src={googleIcon} alt="google icon" className="w-8 h-8"/>
                 <span className="">Google authentification </span>
             </div>
-                {console.log(bmiData)}
+
             {/* Login button */}
             <div className="loginButton flex flex-col gap-3">
                 <button className="w-52 rounded-md p-1 text-white bg-blue-600 shadow-blue-500/50 ">Login</button>

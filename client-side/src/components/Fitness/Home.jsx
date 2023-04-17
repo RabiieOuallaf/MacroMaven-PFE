@@ -4,7 +4,7 @@ import DailyActivity from "../utils/dailyActivity/DailyActivity";
 import Diet from "../utils/diet/Diet";
 import Nutrition from "../utils/nutrition/Nutrition";
 import Quote from "../utils/quotes/Quote";
-import { BmiProvider, useStateContext } from "../../Contexts/BmiDataContextProvider";
+import { useStateContext } from "../../Contexts/BmiDataContextProvider";
 const HomePage = () => {
     const {Bmi} = useStateContext()
     return (
