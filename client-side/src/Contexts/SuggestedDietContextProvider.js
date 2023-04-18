@@ -11,7 +11,7 @@ export const DietContextProvider = ({children}) => {
 
 
     const getSuggestedDiet = (url , id, bmi) => {
-        axios.post('http://127.0.0.1:8000/api/fitness/dietSuggestor', {id  ,bmi})
+        axios.post(url, {id  ,bmi})
         .then( (response) => {
             setSuggestedDiet(response);
         })
