@@ -29,15 +29,13 @@ export const BmiContextProvider = ({ children }) => {
       })
   }
 
-  const getSavedUserBmiData = () => { 
-    return bmiData;
-  }
+  
 
 
 
   return (
 
-    <BmiContext.Provider value={{ bmiData, getUserBmiData , getSavedUserBmiData}}>
+    <BmiContext.Provider value={{ bmiData, getUserBmiData }}>
       {children}
     </BmiContext.Provider>
   );

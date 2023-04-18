@@ -11,10 +11,10 @@ import { useStateContext } from '../../../Contexts/BmiDataContextProvider';
 
 function Diet() {
 
-    const { bmiData, getSavedUserBmiData } = useStateContext();
+    const { bmiData } = useStateContext();
 
     useEffect(() => {
-        console.log(getSavedUserBmiData());
+        console.log("starting");
     }, [])
 
     return (
