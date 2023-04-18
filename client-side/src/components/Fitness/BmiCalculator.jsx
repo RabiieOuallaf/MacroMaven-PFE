@@ -15,8 +15,9 @@ function BmiCalculator() {
     const [bmi, setBmi] = useState();
     const [status, setStatus] = useState('');
     const [comment, setComment] = useState('');
-
+    
     const { updateBmiData , bmiData} = useStateContext();
+    const user_id = localStorage.getItem('user_id');
 
     const rangeData = [
         {
@@ -56,13 +57,14 @@ function BmiCalculator() {
     const getUserBmi = (e) => {
         e.preventDefault();
 
-        axios.post('http://127.0.0.1:8000/api/fitness/bmiCalculator', { height, weight, gender, user_id: 1 })
+        axios.post('http://127.0.0.1:8000/api/fitness/bmiCalculator', { height, weight, gender, user_id })
             .then((response) => {
                 const newBmiData = {
                     bmi : response.data.original.original.results.bmi,
                     comment : response.data.original.original.results.status,
                     status : response.data.original.original.results.comment
                 }
+                
 
                 updateBmiData(newBmiData);
                 // setBmi(response.data.original.original.results.bmi);

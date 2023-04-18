@@ -35,9 +35,11 @@ class EmailAuthenticationController extends Controller implements AuthInterface
 
         if($user){
            $token = JWTAuth::fromUser($user);
+           $userId = $user->id;
             return response()->json([
                 'Message' => "User created seccussfully !", 
-                'Token' => $token 
+                'Token' => $token,  
+                'user_id' => $userId
                 ],201);
         }else{
             return response()->json(['Message' => "There's a problem with your registration request ! " , 401]);

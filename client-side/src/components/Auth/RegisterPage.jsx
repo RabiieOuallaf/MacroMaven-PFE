@@ -26,6 +26,7 @@ function RegisterPage() {
         axios.post('http://127.0.0.1:8000/api/auth/register', { email, password, birthday, name, authenticationType: 'email' })
             .then((response) => {
                 localStorage.setItem('token',response.data.message.original.Token);
+                localStorage.setItem('user_id',response.data.message.original.user_id);
                 navigate('/bmicalculator');
             })
             .catch((error => {
