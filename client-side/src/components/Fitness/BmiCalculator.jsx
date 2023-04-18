@@ -5,6 +5,7 @@ import male from '../../icons/male.png';
 import female from '../../icons/female.png';
 import Range from '../utils/fitness/Range';
 import axios from 'axios';
+import { useStateContext } from '../../Contexts/BmiDataContextProvider';
 
 
 function BmiCalculator() {
@@ -15,6 +16,7 @@ function BmiCalculator() {
     const [status, setStatus] = useState('');
     const [comment, setComment] = useState('');
 
+    const { updateBmiData , bmiData} = useStateContext();
 
     const rangeData = [
         {
@@ -56,11 +58,18 @@ function BmiCalculator() {
 
         axios.post('http://127.0.0.1:8000/api/fitness/bmiCalculator', { height, weight, gender, user_id: 1 })
             .then((response) => {
-                setBmi(response.data.original.original.results.bmi);
-                setStatus(response.data.original.original.results.status);
-                setComment(response.data.original.original.results.comment);
+                const newBmiData = {
+                    bmi : response.data.original.original.results.bmi,
+                    comment : response.data.original.original.results.status,
+                    status : response.data.original.original.results.comment
+                }
 
-                console.log(`your bmi is ${bmi} and ${comment} , ${status}`)
+                updateBmiData(newBmiData);
+                // setBmi(response.data.original.original.results.bmi);
+                // setStatus(response.data.original.original.results.status);
+                // setComment(response.data.original.original.results.comment);
+
+                console.log(`your bmi is ${parseInt(bmiData.bmi)} and ${bmiData.comment} , ${bmiData.status}`)
             })
             .catch((error) => {
                 console.log(error);

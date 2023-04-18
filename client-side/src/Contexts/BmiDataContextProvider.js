@@ -9,9 +9,13 @@ export const BmiProvider = ({ children }) => {
     comment: "",
     status: "",
   });
+
+  const updateBmiData = (newBmiData) => {  // update the bmi value (We're getting the bmi data from BmiCalculator.jsx component)
+    setBmiData(newBmiData);
+  };
   
   return (
-    <BmiContext.Provider value={{ bmiData, setBmiData }}>
+    <BmiContext.Provider value={{ bmiData, updateBmiData }}>
       {children}
     </BmiContext.Provider>
   );
