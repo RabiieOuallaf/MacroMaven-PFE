@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
  const BmiContext = createContext();
 
 
-export const BmiProvider = ({ children }) => {
+export const BmiContextProvider = ({ children }) => {
   const [bmiData, setBmiData] = useState({
     bmi: Number,
     comment: "",

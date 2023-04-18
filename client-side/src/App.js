@@ -9,7 +9,8 @@ import NutritionSearchEngine from './components/Fitness/NutritionSearchEngine';
 import Profile from './components/Users/Profile';
 import Chat from './components/Users/Chat';
 import { useState } from 'react';
-import { BmiContext, BmiProvider } from './Contexts/BmiDataContextProvider';
+import { BmiContext, BmiContextProvider } from './Contexts/BmiDataContextProvider';
+import { DietContextProvider } from './Contexts/SuggestedDietContextProvider';
 
 export default function App() {
   const router = createBrowserRouter(
@@ -21,17 +22,19 @@ export default function App() {
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/home' element={
 
-          <BmiProvider>
-
-            <HomePage />
-
-          </BmiProvider>
+          <BmiContextProvider>
+            <DietContextProvider>
+              <HomePage />
+            </DietContextProvider>
+          </BmiContextProvider>
 
         } />
         <Route path='/bmicalculator' element={
-          <BmiProvider>
-            <BmiCalculator />
-          </BmiProvider>
+          <BmiContextProvider>
+            <DietContextProvider>
+              <BmiCalculator />
+            </DietContextProvider>
+          </BmiContextProvider>
         } />
         <Route path='/nutritionsearch' element={<NutritionSearchEngine />} />
         <Route path='/profile' element={<Profile />} />

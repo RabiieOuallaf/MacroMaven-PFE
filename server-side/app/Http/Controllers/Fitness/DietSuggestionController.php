@@ -18,7 +18,7 @@ class DietSuggestionController extends Controller
     {
         $validatedData = Validator::make($request->all(), [
             'id' => 'required',
-            'BMI' => 'required'
+            'bmi' => 'required'
         ]);
         // Erorr handling 
         if ($validatedData->fails()) {
@@ -28,7 +28,7 @@ class DietSuggestionController extends Controller
         $data = $validatedData->validated(); // Get the validated data 
 
         $userId = $data['id'];
-        $bmiValue = $data['BMI'];
+        $bmiValue = $data['bmi'];
 
         $result = self::DietSuggestor($bmiValue, $userId);
 
