@@ -14,12 +14,11 @@ function BmiCalculator() {
     const [gender, setGender] = useState('male');
     const [height, setHeight] = useState();
     const [weight, setWeight] = useState();
-    
-    
-    const { bmiData , getUserBmiData} = useStateContext();
+
+
+    const { bmiData, getUserBmiData } = useStateContext();
     const user_id = localStorage.getItem('user_id');
 
-    const { getSuggestedDiet, SuggestedDiet, setBmiData} = useDietContext();
 
     const rangeData = [
         {
@@ -58,31 +57,59 @@ function BmiCalculator() {
 
     const getUserBmi = (e) => {
         e.preventDefault();
-        console.log(bmiData ? bmiData: '');
-        getUserBmiData(  height, weight, gender, user_id );
+        console.log(bmiData ? bmiData : '');
+        getUserBmiData(height, weight, gender, user_id);
 
-        
+
     }
-  
+
 
 
     return (
 
-        <div className='h-screen w-full bg-slate-900'>
+        <div className='h-screen w-full bg-slate-900 overflow-hidden'>
             {/* == Image container == */}
             <div className="side-hero-img ">
 
                 <img src={sideHero} alt="bodybuilder lifting weights" className='h-screen absolute right-0 z-30' />
-                <div className="bmi-results">
+                <div className="bmi-results ">
                     <img src={bmiResultBg} alt="bmi result blue-to-white background" className='w-[80%] h-[25%] absolute bottom-0' />
                     {
                         bmiData && bmiData.bmi && bmiData.comment && bmiData.status ? <div className='absolute bottom-0 m-9 cursor-pointer'>
-                            <h2 className='text-white text-[2.9rem] font-bold'>Your BMI is : {parseInt(bmiData.bmi)}</h2>
-                            <h3 className='text-white text-2xl font-bold'>{bmiData.status} , {bmiData.comment}</h3>
-                        </div> : <h2 className='text-white'>Something went wrong!</h2>
+                            <div className="bmi-container flex justify-between w-[850px]">
+
+                                <div className="bmi-data">
+                                    <h2 className='text-white text-[2.9rem] font-bold'>Your BMI is : {parseInt(bmiData.bmi)}</h2>
+                                    <h3 className='text-white text-2xl font-bold'>{bmiData.status} , {bmiData.comment}</h3>
+                                </div>
+                                
+
+                                <button className={`
+                                w-20    
+                                h-8        
+                                absolute 
+                                right-0
+                                top-10        
+                                text-sm
+                                rounded-md 
+                                cursor-pointer 
+                                text-white 
+                                bg-${gender == 'male' ? 'blue-600' : 'pink-400'}
+                                hover:bg-${gender == 'male' ? 'blue-600' : 'pink-500'}
+                                duration-200 ease-in-out`
+
+                                }
+                                >
+                                    <Link to={'/home'}>your diet</Link>
+                                </button>
+                            </div>
+
+
+                        </div> : ''
                     }
                 </div>
-                <Link to={'/home'} >Go home lkujyhgfmkujnhbg</Link>
+
+
             </div>
 
             <div className="bmi-calculator-container flex flex-col gap-10 w-[50%] mx-10 items-center">
@@ -100,7 +127,7 @@ function BmiCalculator() {
                             <img src={female} alt='male icon' className='w-6' /> <span className='text-2xl text-center font-semibold'>Female</span>
                         </button>
                     </div>
-                    
+
 
 
                 </div>
