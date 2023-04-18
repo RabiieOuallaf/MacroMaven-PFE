@@ -4,13 +4,13 @@ import DailyActivity from "../utils/dailyActivity/DailyActivity";
 import Diet from "../utils/diet/Diet";
 import Nutrition from "../utils/nutrition/Nutrition";
 import Quote from "../utils/quotes/Quote";
-import { BmiContextProvider, useStateContext } from "../../Contexts/BmiDataContextProvider";
+import { BmiContextProvider } from "../../Contexts/BmiDataContextProvider";
 import { DietContextProvider } from "../../Contexts/SuggestedDietContextProvider";
 
 
 const HomePage = () => {
 
-    
+
     
     return (
 

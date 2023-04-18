@@ -22,6 +22,7 @@ export const BmiContextProvider = ({ children }) => {
         }
 
         setBmiData(newBmiData);
+        localStorage.setItem('user_bmi' , newBmiData.bmi)
       })
 
       .catch((error) => {
@@ -41,5 +42,5 @@ export const BmiContextProvider = ({ children }) => {
   );
 };
 
-export const useStateContext = () => useContext(BmiContext)
+export const useBmiContext = () => useContext(BmiContext)
 

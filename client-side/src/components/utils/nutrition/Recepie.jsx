@@ -17,9 +17,6 @@ function Recepie(props) {
                     <h3 className='text-center text-xl'>{props.calories}</h3>
                 </div>
 
-                
-
-
             </div>
         </div>
     )

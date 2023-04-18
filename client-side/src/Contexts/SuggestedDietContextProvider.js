@@ -11,7 +11,8 @@ export const DietContextProvider = ({ children }) => {
     const getSuggestedDiet = (url, id, bmi) => {
         axios.post(url, { id, bmi })
             .then((response) => {
-                setSuggestedDiet(response);
+                setSuggestedDiet(response.data.original.original.original.Diet);
+                console.log(SuggestedDiet)
             })
             .catch((error) => {
                 console.log(error);

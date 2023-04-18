@@ -5,33 +5,36 @@ import waterIcon from '../../../icons/waterIcon.png';
 import protienIcon from '../../../icons/protienIcon.png';
 import MacrosLine from './MacrosLine';
 import { useDietContext } from '../../../Contexts/SuggestedDietContextProvider';
-import { useStateContext } from '../../../Contexts/BmiDataContextProvider';
+import { useBmiContext } from '../../../Contexts/BmiDataContextProvider';
 
 
 
 function Diet() {
 
-    const { bmiData } = useStateContext();
+    const { getSuggestedDiet, SuggestedDiet} = useDietContext();
+
+    const id = localStorage.getItem('user_id')
+    const bmi = localStorage.getItem('user_bmi')
 
     useEffect(() => {
-        console.log("starting");
-    }, [])
+        getSuggestedDiet('http://127.0.0.1:8000/api/fitness/dietSuggestor' , id, bmi);
+    }, [bmi])
 
     return (
-        <div className='diet bg-slate-900 w-full h-[50%] flex justify-center' >
+        <div className='diet bg-slate-900 hover:bg-slate-800 duration-300 ease-in w-full h-[50%] flex justify-center' >
             <div className="diet-container flex flex-col justify-center w-full h-full">
 
                 <MacrosLine
-                    name='Burned calories' goal='200/500cal' img={fireIcon}
-                    Sname='Carbs' Sgoal='14/40g' Simg={wheatIcon}
+                    name='Burned calories' goal={`${SuggestedDiet.calories}KCAL`} img={fireIcon}
+                    Sname='Carbs' Sgoal={`${SuggestedDiet.carbs} g`} Simg={wheatIcon}
                 />
 
 
-                <h2 className='text-3xl font-bold text-center text-white my-14'>Keto diet</h2>
+                <h2 className='text-3xl font-bold text-center text-white my-14'>{SuggestedDiet.name}</h2>
 
                 <MacrosLine
-                    name='Burned calories' goal='200/500cal' img={waterIcon}
-                    Sname='Carbs' Sgoal='14/40g' Simg={protienIcon}
+                    name='Burned calories' goal={`${SuggestedDiet.fats}g`} img={waterIcon}
+                    Sname='Carbs' Sgoal={`${SuggestedDiet.protein}g`} Simg={protienIcon}
                 />
 
             </div>

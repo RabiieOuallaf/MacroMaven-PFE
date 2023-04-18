@@ -5,7 +5,7 @@ import male from '../../icons/male.png';
 import female from '../../icons/female.png';
 import Range from '../utils/fitness/Range';
 import axios from 'axios';
-import { useStateContext } from '../../Contexts/BmiDataContextProvider';
+import { useBmiContext } from '../../Contexts/BmiDataContextProvider';
 import { useDietContext } from '../../Contexts/SuggestedDietContextProvider';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ function BmiCalculator() {
     const [weight, setWeight] = useState();
 
 
-    const { bmiData, getUserBmiData } = useStateContext();
+    const { bmiData, getUserBmiData } = useBmiContext();
     const user_id = localStorage.getItem('user_id');
 
 
@@ -85,18 +85,18 @@ function BmiCalculator() {
                                 
 
                                 <button className={`
-                                w-20    
-                                h-8        
-                                absolute 
-                                right-0
-                                top-10        
-                                text-sm
-                                rounded-md 
-                                cursor-pointer 
-                                text-white 
-                                bg-${gender == 'male' ? 'blue-600' : 'pink-400'}
-                                hover:bg-${gender == 'male' ? 'blue-600' : 'pink-500'}
-                                duration-200 ease-in-out`
+                                    w-20    
+                                    h-8        
+                                    absolute 
+                                    right-0
+                                    top-10        
+                                    text-sm
+                                    rounded-md 
+                                    cursor-pointer
+                                    text-white 
+                                    bg-${gender == 'male' ? 'blue-600' : 'pink-400'}
+                                    hover:bg-${gender == 'male' ? 'blue-600' : 'pink-500'}
+                                    duration-200 ease-in-out`
 
                                 }
                                 >
