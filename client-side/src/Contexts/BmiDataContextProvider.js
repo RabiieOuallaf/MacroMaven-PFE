@@ -1,6 +1,7 @@
+import axios from "axios";
 import { createContext, useContext, useState } from "react";
 
- const BmiContext = createContext();
+const BmiContext = createContext();
 
 
 export const BmiContextProvider = ({ children }) => {
@@ -8,14 +9,35 @@ export const BmiContextProvider = ({ children }) => {
     bmi: Number,
     comment: "",
     status: "",
+
   });
 
-  const updateBmiData = (newBmiData) => {  // update the bmi value (We're getting the bmi data from BmiCalculator.jsx component)
-    setBmiData(newBmiData);
-  };
-  
+  const getUserBmiData = (height, weight, gender, user_id) => {
+    axios.post('http://127.0.0.1:8000/api/fitness/bmiCalculator', { height, weight, gender, user_id })
+      .then((response) => {
+        const newBmiData = {
+          bmi: response.data.original.original.results.bmi,
+          comment: response.data.original.original.results.status,
+          status: response.data.original.original.results.comment
+        }
+
+        setBmiData(newBmiData);
+      })
+
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  const getSavedUserBmiData = () => { 
+    return bmiData;
+  }
+
+
+
   return (
-    <BmiContext.Provider value={{ bmiData, updateBmiData }}>
+
+    <BmiContext.Provider value={{ bmiData, getUserBmiData , getSavedUserBmiData}}>
       {children}
     </BmiContext.Provider>
   );

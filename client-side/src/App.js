@@ -17,7 +17,12 @@ export default function App() {
     createRoutesFromElements(
 
       <Route >
-        <Route index element={<Authentification />} />
+        <Route index element={
+          <BmiContextProvider>
+            <Authentification />
+          </BmiContextProvider>
+          
+          } />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/home' element={

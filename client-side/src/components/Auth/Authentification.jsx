@@ -3,7 +3,7 @@ import googleIcon from '../../icons/googleIcon.png';
 import { Link } from "react-router-dom";
 
 function Authentification() {
-    
+
 
     return (
 

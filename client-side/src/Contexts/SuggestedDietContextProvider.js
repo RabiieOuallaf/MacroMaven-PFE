@@ -1,23 +1,21 @@
 import axios from "axios";
-import {createContext, useContext, useState} from "react";
+import { createContext, useContext, useState } from "react";
 
 const DietContext = createContext();
 
 
-export const DietContextProvider = ({children}) => {
+export const DietContextProvider = ({ children }) => {
 
     const [SuggestedDiet, setSuggestedDiet] = useState();
 
-
-
-    const getSuggestedDiet = (url , id, bmi) => {
-        axios.post(url, {id  ,bmi})
-        .then( (response) => {
-            setSuggestedDiet(response);
-        })
-        .catch( (error) => {
-            console.log(error); 
-        })
+    const getSuggestedDiet = (url, id, bmi) => {
+        axios.post(url, { id, bmi })
+            .then((response) => {
+                setSuggestedDiet(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import sideHero from '../../images/fitness/sideHero.png';
 import bmiResultBg from '../../images/fitness/bmiResultBg.png';
 import male from '../../icons/male.png';
@@ -7,6 +7,7 @@ import Range from '../utils/fitness/Range';
 import axios from 'axios';
 import { useStateContext } from '../../Contexts/BmiDataContextProvider';
 import { useDietContext } from '../../Contexts/SuggestedDietContextProvider';
+import { Link } from 'react-router-dom';
 
 
 function BmiCalculator() {
@@ -15,10 +16,10 @@ function BmiCalculator() {
     const [weight, setWeight] = useState();
     
     
-    const { updateBmiData , bmiData} = useStateContext();
+    const { bmiData , getUserBmiData} = useStateContext();
     const user_id = localStorage.getItem('user_id');
 
-    const { getSuggestedDiet, SuggestedDiet } = useDietContext();
+    const { getSuggestedDiet, SuggestedDiet, setBmiData} = useDietContext();
 
     const rangeData = [
         {
@@ -57,21 +58,12 @@ function BmiCalculator() {
 
     const getUserBmi = (e) => {
         e.preventDefault();
+        console.log(bmiData ? bmiData: '');
+        getUserBmiData(  height, weight, gender, user_id );
 
-        axios.post('http://127.0.0.1:8000/api/fitness/bmiCalculator', { height, weight, gender, user_id })
-            .then((response) => {
-                const newBmiData = {
-                    bmi : response.data.original.original.results.bmi,
-                    comment : response.data.original.original.results.status,
-                    status : response.data.original.original.results.comment
-                }
-                updateBmiData(newBmiData);
-                getSuggestedDiet('http://127.0.0.1:8000/api/fitness/dietSuggestor',user_id, newBmiData.bmi);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        
     }
+  
 
 
     return (
@@ -84,12 +76,13 @@ function BmiCalculator() {
                 <div className="bmi-results">
                     <img src={bmiResultBg} alt="bmi result blue-to-white background" className='w-[80%] h-[25%] absolute bottom-0' />
                     {
-                        bmiData.bmi && bmiData.comment && bmiData.status ? <div className='absolute bottom-0 m-9 cursor-pointer'>
+                        bmiData && bmiData.bmi && bmiData.comment && bmiData.status ? <div className='absolute bottom-0 m-9 cursor-pointer'>
                             <h2 className='text-white text-[2.9rem] font-bold'>Your BMI is : {parseInt(bmiData.bmi)}</h2>
                             <h3 className='text-white text-2xl font-bold'>{bmiData.status} , {bmiData.comment}</h3>
-                        </div> : ''
+                        </div> : <h2 className='text-white'>Something went wrong!</h2>
                     }
                 </div>
+                <Link to={'/home'} >Go home lkujyhgfmkujnhbg</Link>
             </div>
 
             <div className="bmi-calculator-container flex flex-col gap-10 w-[50%] mx-10 items-center">
@@ -107,8 +100,7 @@ function BmiCalculator() {
                             <img src={female} alt='male icon' className='w-6' /> <span className='text-2xl text-center font-semibold'>Female</span>
                         </button>
                     </div>
-                    {                console.log(SuggestedDiet)
-                    }
+                    
 
 
                 </div>
