@@ -47,8 +47,12 @@ function RegisterPage() {
         }
 
         if (file) {
-            reader.readAsDataUrl(file);
+            reader.readAsDataURL(file);
         }
+    }
+    const handleButtonClick = (e) => {
+        e.preventDefault();
+        inputRef.current.click();
     }
 
     return (
@@ -58,16 +62,35 @@ function RegisterPage() {
                 <div className="register-form w-[70%] flex justify-center items-center">
                     <form onSubmit={handleRegisterForm} className='flex flex-col justify-around'>
                         {/*  headers */}
-                        <div className="user-greeting text-5xl font-bold mb-20">
+                        <div className="user-greeting text-5xl font-bold mb-18">
                             <h2 className='text-white text-center'>Join <span className='text-blue-700'>Us</span></h2>
                         </div>
 
                         {/* == User name input section == */}
 
                         <div className="user-picture cursor-pointer flex justify-center">
-                            <button 
-                                onClick={() => inputRef.current.click()}
-                                className='
+
+                            <input
+                                type="file"
+                                onChange={handlePictureChange}
+                                className='hidden'
+                                ref={inputRef}
+
+
+
+                            />
+                            {pictureUrl ? (
+                                <img
+                                    src={pictureUrl}
+                                    alt="Profile Picture"
+                                    className='w-28 h-28 m-auto rounded-full shadow'
+                                    onClick={handleButtonClick}
+                                />
+                            ) :
+
+                                <button
+                                    onClick={handleButtonClick}
+                                    className='
                                     w-32
                                     bg-blue-500 
                                     hover:bg-blue-400
@@ -78,16 +101,12 @@ function RegisterPage() {
                                     text-center
                                     p-2
                                     '
-                            >
-                                <FontAwesomeIcon icon={faUpload} /><br/>
-                               Profile Picture
-                            </button>
-                            <input 
-                                type="file" 
-                                onChange={handlePictureChange} 
-                                className='hidden' 
-                                ref={inputRef}
-                            />
+                                >
+                                    <FontAwesomeIcon icon={faUpload} /><br />
+                                    Profile Picture
+                                </button>
+
+                            }
                         </div>
 
 
