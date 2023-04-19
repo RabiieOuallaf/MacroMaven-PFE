@@ -27,21 +27,23 @@ export default function App() {
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/home' element={
 
-          <BmiContextProvider>
             <DietContextProvider>
               <HomePage />
             </DietContextProvider>
-          </BmiContextProvider>
 
         } />
         <Route path='/bmicalculator' element={
           <BmiContextProvider>
-            <DietContextProvider>
               <BmiCalculator />
-            </DietContextProvider>
           </BmiContextProvider>
         } />
-        <Route path='/nutritionsearch' element={<NutritionSearchEngine />} />
+        <Route path='/nutritionsearch' element={
+        
+          <DietContextProvider>
+            <NutritionSearchEngine />
+          </DietContextProvider>
+          
+          } />
         <Route path='/profile' element={<Profile />} />
         <Route path='/chat' element={<Chat />} />
 

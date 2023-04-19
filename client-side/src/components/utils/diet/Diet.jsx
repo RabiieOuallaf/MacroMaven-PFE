@@ -21,7 +21,8 @@ function Diet() {
     }, [bmi])
 
     return (
-        <div className='diet bg-slate-900 hover:bg-slate-800 duration-300 ease-in w-full h-[50%] flex justify-center' >
+        SuggestedDiet ? (
+            <div className='diet bg-slate-900 hover:bg-slate-800 duration-300 ease-in w-full h-[50%] flex justify-center' >
             <div className="diet-container flex flex-col justify-center w-full h-full">
 
                 <MacrosLine
@@ -40,6 +41,8 @@ function Diet() {
             </div>
 
         </div>
+        ) : ''
+        
     )
 }
 

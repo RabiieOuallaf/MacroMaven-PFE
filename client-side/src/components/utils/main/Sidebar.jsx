@@ -52,7 +52,7 @@ const Sidebar = () => {
     ]
     return (
 
-        <div className="sidebar bg-white w-[7%] flex flex-col gap-5 items-center absolute">
+        <div className="sidebar bg-white w-[7%] flex flex-col gap-5 h-screen items-center absolute">
 
             {/* == Macro maven logo section == */}
             <div className="macromvan-logo mt-5 mb-10 cursor-pointer">

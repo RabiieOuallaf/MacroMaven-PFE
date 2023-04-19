@@ -12,7 +12,7 @@ export const DietContextProvider = ({ children }) => {
         axios.post(url, { id, bmi })
             .then((response) => {
                 setSuggestedDiet(response.data.original.original.original.Diet);
-                console.log(SuggestedDiet)
+                localStorage.setItem('user_dietName' , response.data.original.original.original.Diet.name)
             })
             .catch((error) => {
                 console.log(error);
