@@ -18,6 +18,7 @@ class CreateDietsTable extends Migration
             $table->string('name');
             $table->float('protein');
             $table->float('carbs');
+            
             $table->float('fats');
             $table->float('calories');
             $table->timestamps();
