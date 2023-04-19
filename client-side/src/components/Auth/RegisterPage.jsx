@@ -13,6 +13,7 @@ function RegisterPage() {
     const [password, setPassword] = useState('');
     const [birthday, setBirthday] = useState(Date);
     const [pictureUrl, setPictureUrl] = useState(null);
+    const [picture, setPicture] = useState('');
     const inputRef = useRef(null)
     const navigate = useNavigate();
 
@@ -26,11 +27,12 @@ function RegisterPage() {
 
     const handleRegisterForm = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:8000/api/auth/register', { email, password, birthday, name, authenticationType: 'email' })
+        axios.post('http://127.0.0.1:8000/api/auth/register', { email, password, birthday, name, picture,authenticationType: 'email' })
             .then((response) => {
+                console.log(response)
                 localStorage.setItem('token', response.data.message.original.Token);
                 localStorage.setItem('user_id', response.data.message.original.user_id);
-                navigate('/bmicalculator');
+                
             })
             .catch((error => {
                 console.error(` The erorr is : ${error}`);
@@ -44,6 +46,7 @@ function RegisterPage() {
 
         reader.onload = (e) => {
             setPictureUrl(e.target.result)
+            setPicture(file.name);
         }
 
         if (file) {
@@ -72,6 +75,7 @@ function RegisterPage() {
 
                             <input
                                 type="file"
+                                name='picture'
                                 onChange={handlePictureChange}
                                 className='hidden'
                                 ref={inputRef}

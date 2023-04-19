@@ -20,13 +20,21 @@ class EmailAuthenticationController extends Controller implements AuthInterface
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6',
-            'birthday' => 'required|date'
+            'birthday' => 'required|date',
+            'picture' => 'required|string'
         ]);
         if($validator->fails()){
             return response()->json(['errors' => $validator->errors()], 400);
         }
-
-        // Create user  and establich database connection 
+        // handle file upload 
+        if($request->hasFile('picture')){
+            $file = $request->file('picture');
+            $fileName =  time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('public/images', $fileName);
+        }else{
+            $filePath = null;
+        }
+         
         $formFields = $validator->validated(); // Get the value of attributes that has been validated 
 
         $formFields['password'] = Hash::make($formFields['password']);
@@ -39,10 +47,11 @@ class EmailAuthenticationController extends Controller implements AuthInterface
             return response()->json([
                 'Message' => "User created seccussfully !", 
                 'Token' => $token,  
-                'user_id' => $userId
+                'user_id' => $userId,
+                'picture_url' => $filePath
                 ],201);
         }else{
-            return response()->json(['Message' => "There's a problem with your registration request ! " , 401]);
+            return response()->json(['Message' => "There's a problem with your registration request ! " , 400]);
         }
         
 
