@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import loginBg from '../../images/authentificationPages/loginBg.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock, faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faLock, faUser, faEnvelope, faUpload } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function RegisterPage() {
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [birthday, setBirthday] = useState(Date);
+    const [pictureUrl, setPictureUrl] = useState(null);
+    const inputRef = useRef(null)
     const navigate = useNavigate();
-    
 
-    useEffect( () =>  {
+
+    useEffect(() => {
         const isAuthenticated = !!localStorage.getItem('token');
-        if(isAuthenticated) {
+        if (isAuthenticated) {
             navigate('/home');
         }
     }, [])
@@ -25,14 +28,27 @@ function RegisterPage() {
         e.preventDefault();
         axios.post('http://127.0.0.1:8000/api/auth/register', { email, password, birthday, name, authenticationType: 'email' })
             .then((response) => {
-                localStorage.setItem('token',response.data.message.original.Token);
-                localStorage.setItem('user_id',response.data.message.original.user_id);
+                localStorage.setItem('token', response.data.message.original.Token);
+                localStorage.setItem('user_id', response.data.message.original.user_id);
                 navigate('/bmicalculator');
             })
             .catch((error => {
                 console.error(` The erorr is : ${error}`);
             }))
 
+    }
+
+    const handlePictureChange = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            setPictureUrl(e.target.result)
+        }
+
+        if (file) {
+            reader.readAsDataUrl(file);
+        }
     }
 
     return (
@@ -47,6 +63,32 @@ function RegisterPage() {
                         </div>
 
                         {/* == User name input section == */}
+
+                        <div className="user-picture cursor-pointer flex justify-center">
+                            <button 
+                                onClick={() => inputRef.current.click()}
+                                className='
+                                    w-32
+                                    bg-blue-500 
+                                    hover:bg-blue-400
+                                    duration-300
+                                    ease-in
+                                    rounded-lg
+                                    text-white
+                                    text-center
+                                    p-2
+                                    '
+                            >
+                                <FontAwesomeIcon icon={faUpload} /><br/>
+                               Profile Picture
+                            </button>
+                            <input 
+                                type="file" 
+                                onChange={handlePictureChange} 
+                                className='hidden' 
+                                ref={inputRef}
+                            />
+                        </div>
 
 
                         <div className="user-section my-4 mx-12 flex justify-center">
