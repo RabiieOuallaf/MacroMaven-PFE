@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class UserController extends Controller implements UserServiceInterface
 {
     static public function getUser(Request $request)  :? JsonResponse
@@ -26,9 +26,12 @@ class UserController extends Controller implements UserServiceInterface
         $id = $UserData['user_id'];
 
 
-        $user = User::find($id);
+        $user = User::with('bmi')->find($id);
 
         if($user){
+            $birthday = Carbon::parse($user->birthday);
+            $age = $birthday->age;
+            $user->age = $age;
             return response()->json(['userData' => $user]);
         }else{
             return response()->json(['errors' => 'User not found'], 404);
