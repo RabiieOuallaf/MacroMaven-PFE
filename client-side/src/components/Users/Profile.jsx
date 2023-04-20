@@ -41,7 +41,7 @@ function Profile() {
 
           <div className="user-informations">
             <h2 className='text-3xl text-slate-950 absolute left-[22%] cursor-pointer'>{userData.name}</h2>
-            <h4 className='absolute left-[23%] top-[56.5%] text-2xl cursor-pointer'> <span className='text-blue-500'> {userData.age}</span>Years old</h4>
+            <h4 className='absolute left-[23%] top-[56.5%] text-2xl cursor-pointer'> <span className='text-blue-500'> {userData.age} </span>Years old</h4>
           </div>
           
           <div className="message-button">

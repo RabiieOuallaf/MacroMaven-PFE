@@ -11,6 +11,7 @@ import Chat from './components/Users/Chat';
 import { useState } from 'react';
 import { BmiContext, BmiContextProvider } from './Contexts/BmiDataContextProvider';
 import { DietContextProvider } from './Contexts/SuggestedDietContextProvider';
+import UpdateProfile from './components/Users/UpdateProfile';
 
 export default function App() {
   const router = createBrowserRouter(
@@ -45,7 +46,11 @@ export default function App() {
           
           } />
         <Route path='/profile' element={<Profile />} />
+
+        <Route path='/profile/update' element={<UpdateProfile />}/>
+
         <Route path='/chat' element={<Chat />} />
+
 
       </Route>
     )
