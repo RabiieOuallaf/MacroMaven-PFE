@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersAuth\AuthController;
 
@@ -9,3 +10,4 @@ use App\Http\Controllers\UsersAuth\AuthController;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::post('/getuser', [UserController::class, 'getUser']);

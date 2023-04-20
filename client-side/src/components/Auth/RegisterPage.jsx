@@ -5,8 +5,7 @@ import { faLock, faUser, faEnvelope, faUpload } from '@fortawesome/free-solid-sv
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { fill } from "@cloudinary/url-gen/actions/resize";
-import { CloudinaryImage } from '@cloudinary/url-gen';
+import Swal from 'sweetalert2'
 
 
 function RegisterPage() {
@@ -32,12 +31,29 @@ function RegisterPage() {
         e.preventDefault();
         axios.post('http://127.0.0.1:8000/api/auth/register', { email, password, birthday, name, picture, authenticationType: 'email' })
             .then((response) => {
-                console.log(response)
-                localStorage.setItem('token', response.data.message.original.Token);
-                localStorage.setItem('user_id', response.data.message.original.user_id);
+                const { Token, user_id } = response.data.message.original;
+                if(Token && user_id) {
+                    localStorage.setItem('token', response.data.message.original.Token);
+                    localStorage.setItem('user_id', response.data.message.original.user_id);
 
+                    navigate('/bmicalculator');
+                }else {
+                    Swal.fire({ 
+                        title: 'Error!',
+                        text: 'Please check your credentails !',
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                      })
+                }
+                
             })
             .catch((error => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Please check your credentials!',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                });
                 console.error(` The erorr is : ${error}`);
             }))
 
