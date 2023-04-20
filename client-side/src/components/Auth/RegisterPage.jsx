@@ -11,7 +11,6 @@ import { CloudinaryImage } from '@cloudinary/url-gen';
 
 function RegisterPage() {
 
-    const myImage = new CloudinaryImage('sample', { cloudName: 'drfwsaasz' }).resize(fill().width(100).height(150));
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
