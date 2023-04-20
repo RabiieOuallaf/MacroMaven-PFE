@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import ananadi from '../../images/authentificationPages/ananadi.JPG';
 import Navbar from '../utils/main/Navbar';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2'
+
 
 
 function UpdateProfile() {
@@ -56,7 +56,35 @@ function UpdateProfile() {
 
     const handleUpdateForm = (e) => {
         e.preventDefault();
-        
+
+        axios.post('http://127.0.0.1:8000/api/auth/updateuser', { id: user_id, name, birthday, picture })
+            .then((response) => {
+                let timerInterval
+                Swal.fire({
+                    title: "We're proccessing your request!",
+                    html: 'I will close in <b></b> milliseconds.',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            b.textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                        
+
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log('I was closed by the timer')
+                    }
+                })
+            })
+
     }
 
     useEffect(() => {
@@ -133,7 +161,7 @@ function UpdateProfile() {
                     </div>
 
 
-                <button className='text-white w-48 p-1 bg-blue-600 rounded-lg hover:bg-blue-500 duration-500 ease-in-out absolute bottom-[10.5%]' >Save</button>
+                    <button className='text-white w-48 p-1 bg-blue-600 rounded-lg hover:bg-blue-500 duration-500 ease-in-out absolute bottom-[10.5%]' >Save</button>
                 </div>
             </form>
         </section>
