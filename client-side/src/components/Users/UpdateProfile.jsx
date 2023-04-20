@@ -13,6 +13,9 @@ function UpdateProfile() {
     const inputRef = useRef(null)
     const [pictureUrl, setPictureUrl] = useState(null);
     const [picture, setPicture] = useState('');
+    const [name, setName] = useState('');
+    const [birthday, setBirthday] = useState('');
+
 
     const handlePictureChange = (e) => {
         const file = e.target.files[0];
@@ -51,6 +54,11 @@ function UpdateProfile() {
         inputRef.current.click();
     }
 
+    const handleUpdateForm = (e) => {
+        e.preventDefault();
+        
+    }
+
     useEffect(() => {
         axios.post('http://127.0.0.1:8000/api/auth/getuser', { user_id })
             .then((response) => {
@@ -76,19 +84,30 @@ function UpdateProfile() {
 
             </div>
 
-                <form action="" className='w-full h-[90%] flex justify-around items-center flex-row'>
-            <div className="update-section w-full h-[80%] flex justify-around items-center flex-row">
+            <form onSubmit={handleUpdateForm} className='w-full h-[90%] flex justify-around items-center flex-row'>
+                <div className="update-section w-full h-[80%] flex justify-around items-center flex-row">
                     <div className="profile-data">
 
                         <div className="name-section flex flex-col">
                             <label className='font-semibold text-white text-[16px] mb-3 '>Name</label>
-                            <input type="text" className=' bg-slate-950 rounded-md p-1 text-white' placeholder={userData.name} />
+                            <input
+                                type="text"
+                                className='bg-slate-950 rounded-md p-1 text-white'
+                                placeholder={userData.name}
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
                             <span className='text-neutral-600 text-sm mt-3 pl-5'> Your name will appear around macroMaven website. </span>
                         </div>
 
                         <div className="birthday-section flex flex-col ">
                             <label className='font-semibold text-white text-[16px] mb-3 '>Birthday</label>
-                            <input type="date" className=' bg-slate-950 rounded-md p-1 text-white' />
+                            <input
+                                type="date"
+                                className='bg-slate-950 rounded-md p-1 text-white'
+                                value={birthday}
+                                onChange={(e) => setBirthday(e.target.value)}
+                            />
                             <span className='text-neutral-600 text-sm mt-3 pl-5'> Your birthday will appear only for you. </span>
                         </div>
 
@@ -114,8 +133,9 @@ function UpdateProfile() {
                     </div>
 
 
-            </div>
-                </form>
+                <button className='text-white w-48 p-1 bg-blue-600 rounded-lg hover:bg-blue-500 duration-500 ease-in-out absolute bottom-[10.5%]' >Save</button>
+                </div>
+            </form>
         </section>
 
     )
