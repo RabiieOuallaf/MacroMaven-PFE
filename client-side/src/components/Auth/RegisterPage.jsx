@@ -5,9 +5,13 @@ import { faLock, faUser, faEnvelope, faUpload } from '@fortawesome/free-solid-sv
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { fill } from "@cloudinary/url-gen/actions/resize";
+import { CloudinaryImage } from '@cloudinary/url-gen';
+
 
 function RegisterPage() {
 
+    const myImage = new CloudinaryImage('sample', { cloudName: 'drfwsaasz' }).resize(fill().width(100).height(150));
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -27,12 +31,12 @@ function RegisterPage() {
 
     const handleRegisterForm = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:8000/api/auth/register', { email, password, birthday, name, picture,authenticationType: 'email' })
+        axios.post('http://127.0.0.1:8000/api/auth/register', { email, password, birthday, name, picture, authenticationType: 'email' })
             .then((response) => {
                 console.log(response)
                 localStorage.setItem('token', response.data.message.original.Token);
                 localStorage.setItem('user_id', response.data.message.original.user_id);
-                
+
             })
             .catch((error => {
                 console.error(` The erorr is : ${error}`);
@@ -42,15 +46,33 @@ function RegisterPage() {
 
     const handlePictureChange = (e) => {
         const file = e.target.files[0];
+        let formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'iih51pyv');
+
+        axios.defaults.withCredentials = false;
+
+        axios.post('https://api.cloudinary.com/v1_1/drfwsaasz/upload', formData, {
+            headers: 'Access-Control-Allow-Origin'
+        })
+            .then((response) => {
+                setPicture(response.data.secure_url)
+
+            })
+            .catch((erorr) => {
+                console.log(erorr)
+            })
+
         const reader = new FileReader();
 
         reader.onload = (e) => {
             setPictureUrl(e.target.result)
-            setPicture(file.name);
         }
+
 
         if (file) {
             reader.readAsDataURL(file);
+
         }
     }
     const handleButtonClick = (e) => {
@@ -59,6 +81,7 @@ function RegisterPage() {
     }
 
     return (
+
         <section className='w-screen h-screen bg-slate-950 flex flex-row justify-center items-center  gap-6 '>
             {/*  == Register page form == */}
             <div className="container bg-gradient-to-r from-[#D8D5D6] to-gray-500 w-[75%] h-[90%] flex rounded-3xl p-5">
@@ -72,6 +95,7 @@ function RegisterPage() {
                         {/* == User name input section == */}
 
                         <div className="user-picture cursor-pointer flex justify-center">
+
 
                             <input
                                 type="file"
