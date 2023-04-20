@@ -3,6 +3,7 @@ import Navbar from '../utils/main/Navbar';
 import ananadi from '../../images/authentificationPages/ananadi.JPG';
 import settings from '../../icons/settings.png';
 import axios from 'axios';
+import {  useNavigate } from 'react-router-dom';
 
 
 
@@ -10,7 +11,10 @@ function Profile() {
 
   const [userData, setUserData] = useState('');
   const user_id = localStorage.getItem('user_id');
-  
+  const navigate = useNavigate()
+  const navigateToUpdatePage = () => {
+    navigate('/profile/update')
+  }
   
   useEffect(() => {
      axios.post('http://127.0.0.1:8000/api/auth/getuser', {user_id})
@@ -51,7 +55,7 @@ function Profile() {
           
         </div>
         {/* == second half(white) == */}
-        <div className="bg-white w-[85%] h-[200px] rounded-lg pt-2">
+        <div className="bg-white w-[85%] h-[200px] rounded-lg pt-2" onClick={navigateToUpdatePage}>
           <img src={settings} alt="" className='w-6 absolute right-[14%] cursor-pointer' />
         </div>
       </div>

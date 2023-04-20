@@ -74,7 +74,7 @@ function UpdateProfile() {
                     },
                     willClose: () => {
                         clearInterval(timerInterval);
-                        
+                        console.log(response)
 
                     }
                 }).then((result) => {
@@ -91,8 +91,8 @@ function UpdateProfile() {
         axios.post('http://127.0.0.1:8000/api/auth/getuser', { user_id })
             .then((response) => {
                 setUserData(response.data.userData);
+                setPicture(userData.picture);
                 console.log(userData.birthday);
-                setPicture(userData.picture)
             })
             .catch((error) => {
                 console.log(error)
