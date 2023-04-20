@@ -4,9 +4,7 @@ import bmiResultBg from '../../images/fitness/bmiResultBg.png';
 import male from '../../icons/male.png';
 import female from '../../icons/female.png';
 import Range from '../utils/fitness/Range';
-import axios from 'axios';
 import { useBmiContext } from '../../Contexts/BmiDataContextProvider';
-import { useDietContext } from '../../Contexts/SuggestedDietContextProvider';
 import { Link } from 'react-router-dom';
 
 
@@ -59,8 +57,6 @@ function BmiCalculator() {
         e.preventDefault();
         console.log(bmiData ? bmiData : '');
         getUserBmiData(height, weight, gender, user_id);
-
-
     }
 
 

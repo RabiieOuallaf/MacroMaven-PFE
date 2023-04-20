@@ -2,9 +2,12 @@ import React from 'react';
 import Navbar from '../utils/main/Navbar';
 import ananadi from '../../images/authentificationPages/ananadi.JPG';
 import settings from '../../icons/settings.png';
+import axios from 'axios';
+
 
 
 function Profile() {
+  
   return (  
     <div className='h-screen w-full bg-slate-950'>
       {/* == Navbar == */}
