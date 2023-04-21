@@ -3,6 +3,7 @@ import ananadi from '../../images/authentificationPages/ananadi.JPG';
 import Navbar from '../utils/main/Navbar';
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -15,6 +16,8 @@ function UpdateProfile() {
     const [picture, setPicture] = useState('');
     const [name, setName] = useState('');
     const [birthday, setBirthday] = useState('');
+
+    const navigate = useNavigate();
 
 
     const handlePictureChange = (e) => {
@@ -84,8 +87,12 @@ function UpdateProfile() {
                     }
                 })
             })
-
     }
+    const navigateToProfile = () => {
+        navigate('/profile');
+    }
+
+    
 
     useEffect(() => {
         axios.post('http://127.0.0.1:8000/api/auth/getuser', { user_id })
@@ -106,7 +113,7 @@ function UpdateProfile() {
                 <Navbar />
             </div>
 
-            <div className=' h-[12%] w-[92%] p-2 absolute left-[2%] flex items-center my-10'>
+            <div className=' h-[12%] w-[92%] p-2 absolute left-[2%] flex items-center my-10' onClick={navigateToProfile}>
                 <img src={userData.picture} alt="sender profile image" className='w-12 h-12 border-2 rounded-[100%] mx-6 cursor-pointer' />
                 <h4 className='text-white font-semibold'><span className='text-blue-500 cursor-pointer hover:text-white duration-200 ease-out'>{userData.name}</span></h4>
 
