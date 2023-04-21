@@ -37,7 +37,7 @@ const HomePage = () => {
             <div className="second-half">
                 {/* == Quotes == */}
                 <Quote />
-                <div className="flex justify-center items-center w-[50%]">
+                <div className="flex justify-center items-center w-[100%] h-[68%]">
                 <Canvas>
                     <OrbitControls enableZoom={false}/>  
                     <ambientLight intensity={0.5}/> 

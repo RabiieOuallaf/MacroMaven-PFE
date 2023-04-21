@@ -14,8 +14,8 @@ export function Male(props) {
   const { nodes, materials } = useGLTF('/male.gltf')
   return (
     <group {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]} scale={0.1}>
-        <group position={[-13.01, -5.52, -44.06]}>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={0.14}>
+        <group position={[-13.01, 10, -44.06]}>
           <mesh geometry={nodes.Object_4.geometry} material={materials.material_0} />
           <mesh geometry={nodes.Object_5.geometry} material={materials.material_0} />
           <mesh geometry={nodes.Object_6.geometry} material={materials.material_0} />
