@@ -6,6 +6,10 @@ import Nutrition from "../utils/nutrition/Nutrition";
 import Quote from "../utils/quotes/Quote";
 import { BmiContextProvider } from "../../Contexts/BmiDataContextProvider";
 import { DietContextProvider } from "../../Contexts/SuggestedDietContextProvider";
+import {Male} from '../ThreeModels/Male'
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { Suspense } from "react";
 
 
 const HomePage = () => {
@@ -33,6 +37,18 @@ const HomePage = () => {
             <div className="second-half">
                 {/* == Quotes == */}
                 <Quote />
+                <div className="flex justify-center items-center w-[50%]">
+                <Canvas>
+                    <OrbitControls enableZoom={false}/>  
+                    <ambientLight intensity={0.5}/> 
+                    <directionalLight position={[-2, 5, 2]} intensity={1} />
+                    <Suspense fallback={null}>
+                        <Male />
+                    </Suspense>
+                    
+                </Canvas>
+                </div>
+                
             </div>
         </div>
     )
