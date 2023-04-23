@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { BmiContext, BmiContextProvider } from './Contexts/BmiDataContextProvider';
 import { DietContextProvider } from './Contexts/SuggestedDietContextProvider';
 import UpdateProfile from './components/Users/UpdateProfile';
+import WorkoutPage from './components/Fitness/WorkoutPage';
 
 export default function App() {
   const router = createBrowserRouter(
@@ -50,6 +51,8 @@ export default function App() {
         <Route path='/profile/update' element={<UpdateProfile />}/>
 
         <Route path='/chat' element={<Chat />} />
+
+        <Route path='/workout' element={<WorkoutPage />}/>
 
 
       </Route>

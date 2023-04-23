@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Sidebar = () => {
+    
     // hook that creat a history object to make it possible to push new URL to the broweser's history
     const Navigate = useNavigate();
     // Sample switch case to handle the user's behavior   
@@ -52,7 +53,7 @@ const Sidebar = () => {
     ]
     return (
 
-        <div className="sidebar bg-white w-[7%] flex flex-col gap-5 h-screen items-center absolute">
+        <div className={`sidebar bg-white w-[7%] flex flex-col gap-5 h-screen items-center absolute`}>
 
             {/* == Macro maven logo section == */}
             <div className="macromvan-logo mt-5 mb-10 cursor-pointer">
