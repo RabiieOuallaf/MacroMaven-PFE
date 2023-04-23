@@ -14,8 +14,8 @@ function WorkoutPage() {
             <div className="male-anatomy ml-[30%] w-[1070px] h-[410px] flex justify-center items-center" >
                 <Canvas>
                     <OrbitControls enableZoom={true} />
-                    <ambientLight intensity={0.5} />
-                    <directionalLight position={[-2, 5, 2]} intensity={1} />
+                    <ambientLight intensity={0.4} />
+                    <directionalLight position={[-2, 5, 2]} intensity={.2} />
                     <Suspense fallback={null}>
                         <MaleMain />
                     </Suspense>

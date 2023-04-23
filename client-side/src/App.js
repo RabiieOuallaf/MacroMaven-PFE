@@ -54,7 +54,6 @@ export default function App() {
 
         <Route path='/workout' element={<WorkoutPage />}/>
 
-
       </Route>
     )
   )
