@@ -10,12 +10,12 @@ Title: Ecorche - Anatomy study
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function Male(props) {
+export function MaleBack(props) {
   const { nodes, materials } = useGLTF('/male.gltf')
   return (
     <group {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0.3]} scale={0.11}>
-        <group position={[-40.01, 8, -34.06]}>
+      <group rotation={[-Math.PI / 2, 0, 3]} scale={0.066}>
+        <group position={[-33, 15, -35.06]}>
           <mesh geometry={nodes.Object_4.geometry} material={materials.material_0} />
           <mesh geometry={nodes.Object_5.geometry} material={materials.material_0} />
           <mesh geometry={nodes.Object_6.geometry} material={materials.material_0} />

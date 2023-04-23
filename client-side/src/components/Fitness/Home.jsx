@@ -10,6 +10,7 @@ import {Male} from '../ThreeModels/Male'
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
+import { MaleBack } from "../ThreeModels/MaleBack";
 
 
 const HomePage = () => {
@@ -44,6 +45,7 @@ const HomePage = () => {
                     <directionalLight position={[-2, 5, 2]} intensity={1} />
                     <Suspense fallback={null}>
                         <Male />
+                        <MaleBack />
                     </Suspense>
                     
                 </Canvas>
