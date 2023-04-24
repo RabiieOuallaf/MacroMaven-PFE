@@ -6,7 +6,7 @@ import { IoFitness, IoMdFitness, IoMdHeart } from "react-icons/io";
 
 function Sidebar() {
   return (
-    <div className='flex'>
+    <div className='flex '>
         <div className='fixed w-20 h-screen bg-white bordre-r-[1px] flex  flex-col justify-between'>
             <div className="flex flex-col items-center my-8">
                 {/* Logo */}
