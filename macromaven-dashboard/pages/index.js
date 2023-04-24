@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
 import TopCard from '@/components/TopCard'
+import BarChart from '@/components/BarChart'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,11 @@ export default function Home() {
       <main className='bg-gray-900 min-h-screen'>
         <Sidebar />
         <Header />
-          <TopCard />
+        <TopCard />
+
+        <div className='p-4 grid md:grid-cols-3 grid-cols-1 gap-4'>
+          <BarChart />
+        </div>
       </main>
     </>
   )
