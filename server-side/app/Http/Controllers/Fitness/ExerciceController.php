@@ -67,6 +67,18 @@ class ExerciceController extends Controller
         return response()->json(['exercices' => $exercices], 200);
     }
 
+    static public function getExerciceById(Request $request) : ?JsonResponse 
+    {
+        $id = self::validateExerciceId($request);
+        $exercice = Exercice::find($id);
+
+        if($exercice) {
+            return response()->json(['Exercice' => $exercice], 200);
+        }else {
+            return response()->json(['Message' => 'An error occured , please try later',404]);
+        }
+    }
+
     static public function deleteExercice(Request $request): ?JsonResponse
     {
 
@@ -79,6 +91,7 @@ class ExerciceController extends Controller
             return response()->json(['Message' => "There's a problem , please try later"]);
         }
     }
+
 
     static private function validateExerciceId($request)
     {

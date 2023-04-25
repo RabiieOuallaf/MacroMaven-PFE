@@ -24,4 +24,5 @@ Route::post('/addexercice',[ExerciceController::class, 'addExercice']);
 Route::put('/updateexercice',[ExerciceController::class, 'updateExercice']);
 Route::delete('/deleteexercice', [ExerciceController::class, 'deleteExercice']);
 Route::get('/getexercicebycategory', [ExerciceController::class, 'displayExercicesByCategory']);
+Route::get('/getexercicebyid', [ExerciceController::class, 'getExerciceById']);
 
