@@ -22,3 +22,4 @@ Route::post('/dietSuggestor', function(Request $request) {
 });
 Route::post('/addexercice',[ExerciceController::class, 'addExercice']);
 Route::post('/updateexercice',[ExerciceController::class, 'updateExercice']);
+Route::delete('/deleteexercice', [ExerciceController::class, 'deleteExercice']);
