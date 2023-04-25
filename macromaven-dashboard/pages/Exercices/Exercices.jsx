@@ -31,6 +31,12 @@ function Exercices({exercices}) {
 
     const router = useRouter();
 
+    const [currentExercices, setCurrentExercices] = useState(exercices);
+
+    useEffect(() => {
+        setCurrentExercices(exercices);
+    }, [currentExercices]);
+
     
 
     const NavigateToAnotherPage = (page, id) => {
@@ -48,7 +54,9 @@ function Exercices({exercices}) {
     }
 
     const handleDeleteRequest = (id) => {
-        axios.delete('http://127.0.0.1:8000/api/fitness/deleteexercice', {params:{id}})
+        axios.delete('http://127.0.0.1:8000/api/fitness/deleteexercice', {params:{id} , headers: {
+            'Cache-Control': 'no-cache'
+          }})
         .then( (response) => {
             console.log(response);
             Swal.fire(
@@ -89,7 +97,7 @@ function Exercices({exercices}) {
       </tr>
     </thead>
     <tbody>
-      {exercices && exercices.map((exercice, index) => (
+      {currentExercices && currentExercices.map((exercice, index) => (
         <tr key={index} className='bg-gray-200 hover:bg-gray-300 duration-200 ease-in rounded-md hover:rounded-2xl my-3 p-2 grid md:grid-cols-7 sm:grid-cols-6 grid-cols-5'>
           <td>
             <div className="flex items-center">
