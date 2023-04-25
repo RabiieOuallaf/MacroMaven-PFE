@@ -4,10 +4,12 @@ import {AiFillEdit, AiOutlinePlusCircle} from 'react-icons/ai';
 import {exercice} from '@/public/images/exercice.png';
 import Sidebar from '@/components/Sidebar';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 function Exercices() {
 
     const [exercices , setExercices] = useState();
+    const router = useRouter();
 
     useEffect( () =>  {
         axios.get('http://127.0.0.1:8000/api/fitness/getexercices')
@@ -20,6 +22,20 @@ function Exercices() {
         })
 
     }, [])
+
+    const NavigateToAnotherPage = (page, id) => {
+        switch(page){
+            case 'add':
+                router.push('/Exercices/AddExercice');
+                break;
+            case 'update':
+                router.push(`/Exercices/UpdateExercice?id=${id}`);
+                break;
+            default:
+                break;
+                
+        }
+    }
     return (
         <div className='bg-gray-900 min-h-screen'>
             <Sidebar />
@@ -60,7 +76,7 @@ function Exercices() {
             <p className='font-bold text-red-500'><BsBackspaceFill cursor={'pointer'}/></p>
           </td>
           <td className='hidden md:flex justify-center'>
-            <p className='font-bold text-red-500'><AiFillEdit cursor={'pointer'}/></p>
+            <p className='font-bold text-red-500'><AiFillEdit cursor={'pointer'} onClick={() => NavigateToAnotherPage('update', exercice.id)}/></p>
           </td>
         </tr>
       ))}
@@ -70,7 +86,7 @@ function Exercices() {
 
 
                 <div className="add-exercice">
-                    <AiOutlinePlusCircle color='white' size={30} cursor={'pointer'}/>
+                    <AiOutlinePlusCircle color='white' size={30} cursor={'pointer'} onClick={() => NavigateToAnotherPage('add')}/>
                 </div>
                 
             </div>
