@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { BsBackspaceFill } from 'react-icons/bs';
 import {AiFillEdit, AiOutlinePlusCircle} from 'react-icons/ai';
-import {exercice} from '@/public/images/exercice.png';
 import Sidebar from '@/components/Sidebar';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Swal from 'sweetalert2';
 
 export async function getServerSideProps() {
     const promise = await axios.get('http://127.0.0.1:8000/api/fitness/getexercices')
@@ -46,6 +46,26 @@ function Exercices({exercices}) {
                 
         }
     }
+
+    const handleDeleteRequest = (id) => {
+        axios.delete('http://127.0.0.1:8000/api/fitness/deleteexercice', {params:{id}})
+        .then( (response) => {
+            console.log(response);
+            Swal.fire(
+                'Exercice updated seccussfully!',
+                'success'
+            )
+        })
+        .catch( (erorr) => {
+            console.log(erorr);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please try later!!',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            });
+        })
+    }
     return (
         <div className='bg-gray-900 min-h-screen'>
             <Sidebar />
@@ -83,7 +103,7 @@ function Exercices({exercices}) {
           <td className='sm:text-left text-right justify-center'>{exercice.exercice_repetition}</td>
           <td className='hidden md:flex justify-center'>{exercice.exercice_category}</td>
           <td className='hidden md:flex justify-center'>
-            <p className='font-bold text-red-500'><BsBackspaceFill cursor={'pointer'}/></p>
+            <p className='font-bold text-red-500'><BsBackspaceFill cursor={'pointer'} onClick={() => handleDeleteRequest(exercice.id)}/></p>
           </td>
           <td className='hidden md:flex justify-center'>
             <p className='font-bold text-red-500'><AiFillEdit cursor={'pointer'} onClick={() => NavigateToAnotherPage('update', exercice.id)}/></p>
