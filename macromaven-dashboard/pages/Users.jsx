@@ -1,6 +1,6 @@
 import Sidebar from '@/components/Sidebar'
 import React from 'react'
-import {BsPersonFill, BsBackspaceFill} from 'react-icons/bs'
+import { BsPersonFill, BsBackspaceFill } from 'react-icons/bs'
 
 function Users() {
   return (
@@ -26,23 +26,23 @@ function Users() {
             <li className='bg-gray-200 hover:bg-gray-300 duration-200 ease-in rounded-md hover:rounded-2xl my-3 p-2 grid md:grid-cols-5 sm:grid-cols-4 grid-cols-3'>
               <div className="flex items-center">
                 <div className="bg-purple-100">
-                  <BsPersonFill className='text-purple-800'/>
+                  <BsPersonFill className='text-purple-800' />
                 </div>
                 <p className='pl-4'>Rabie ouallaf</p>
               </div>
               <p className='hidden md:flex'>22</p>
               <p className='hidden md:flex'>18</p>
-                <p className='hidden md:flex'>mediterranean</p>
-                <div className='sm:flex hidden justify-between items-center'>
-                  <p className='font-bold text-red-500'>Delete <BsBackspaceFill /></p>
-                  
-                </div>
+              <p className='hidden md:flex'>mediterranean</p>
+              <div className='sm:flex hidden justify-between items-center'>
+                <p className='font-bold text-red-500'>Delete <BsBackspaceFill /></p>
+
+              </div>
             </li>
           </ul>
         </div>
+      </div>
     </div>
-    </div>
-    
+
   )
 }
 
