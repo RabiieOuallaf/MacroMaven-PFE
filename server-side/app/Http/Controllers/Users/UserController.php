@@ -34,6 +34,12 @@ class UserController extends Controller implements UserServiceInterface
         }
     }
 
+    static public function getUsers(): ?JsonResponse 
+    {
+        $users = User::with('bmi')->get();
+        return response()->json(['Users' => $users], 200);
+    }
+
     static public function updateUser(Request $request) :? JsonResponse
     {
         $validator = Validator::make($request->all(), [

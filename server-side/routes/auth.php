@@ -12,3 +12,5 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/getuser', [UserController::class, 'getUser']);
 Route::post('/updateuser', [UserController::class, 'updateUser']);
+
+Route::get('/getusers', [UserController::class, 'getUsers']);
