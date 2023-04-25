@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 
 class ExerciceController extends Controller
 {
-    static public function addExercice(Request $request) :? JsonResponse
+    static public function addExercice(Request $request): ?JsonResponse
     {
-        $validator = Validator::make($request->all() , [
+        $validator = Validator::make($request->all(), [
             'exercice_name' => 'required|string|max:255',
             'exercice_sets' => 'required',
             'exercice_repetition' => 'required',
@@ -20,23 +20,23 @@ class ExerciceController extends Controller
             'exercice_category' => 'required|string'
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json(['erorrs' => $validator->errors()], 400);
         }
         // Get the validated data 
         $formFields = $validator->validated();
         $Exercice = Exercice::create($formFields);
 
-        if($Exercice) {
+        if ($Exercice) {
             return response()->json(['Message' => 'Exercice added successfully !', 201]);
-        }else{
+        } else {
             return response()->json(['Error' => "There's a problem , please try later"], 401);
         }
     }
 
-    static public function updateExercice(Request $request) :? JsonResponse
+    static public function updateExercice(Request $request): ?JsonResponse
     {
-        $validator = Validator::make($request->all() , [
+        $validator = Validator::make($request->all(), [
             'exercice_name' => 'required|string|max:255',
             'exercice_sets' => 'required',
             'exercice_repetition' => 'required',
@@ -45,49 +45,51 @@ class ExerciceController extends Controller
             'id' => 'required'
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json(['erorrs' => $validator->errors()], 400);
         }
         // Get the validated data 
         $formFields = $validator->validated();
         $Exercice = Exercice::find($formFields['id']);
 
-        if($Exercice->update($formFields)) {
+        if ($Exercice->update($formFields)) {
             return response()->json(['Message' => 'Exercice updated successfully !', 200]);
-        }else{
+        } else {
             return response()->json(['Error' => "There's a problem , please try later"], 401);
         }
     }
 
-    static public function displayExercices(Request $request) :? JsonResponse 
+    static public function displayExercicesByCategory(Request $request): ?JsonResponse
     {
-        
+        $category_name = $request->input('category_name');
+        $exercices = Exercice::where('exercice_category', $category_name)->get();
+
+        return response()->json(['exercices' => $exercices], 200);
     }
 
-    static public function deleteExercice(Request $request) :? JsonResponse
+    static public function deleteExercice(Request $request): ?JsonResponse
     {
 
         $id = self::validateExerciceId($request);
         $exercice = Exercice::find($id);
 
-        if($exercice->delete()){
+        if ($exercice->delete()) {
             return response()->json(['Message' => 'Exercice deleted successfully !'], 200);
-        }else{
+        } else {
             return response()->json(['Message' => "There's a problem , please try later"]);
         }
     }
 
-    static private function validateExerciceId($request) 
+    static private function validateExerciceId($request)
     {
-        $validator = Validator::make($request->all() , [
+        $validator = Validator::make($request->all(), [
             'id' => 'required'
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json(['erorrs' => $validator->errors()], 400);
         }
         $data = $validator->validated();
         return $data['id'];
-
-    } 
+    }
 }
