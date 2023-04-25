@@ -72,11 +72,7 @@ class ExerciceController extends Controller
         $id = self::validateExerciceId($request);
         $exercice = Exercice::find($id);
 
-        if($exercice) {
-            return response()->json(['Exercice' => $exercice], 200);
-        }else {
-            return response()->json(['Message' => 'An error occured , please try later',404]);
-        }
+        return response()->json(['Exercice' => $exercice], 200);
     }
 
     static public function deleteExercice(Request $request): ?JsonResponse

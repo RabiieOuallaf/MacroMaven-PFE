@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import axios from 'axios';
 
@@ -12,16 +12,17 @@ function UpdateExercice() {
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('http://127.0.0.1:8000/api/fitness/addexercice', {
+        axios.put('http://127.0.0.1:8000/api/fitness/updateexercice', {
             exercice_name: exerciceName,
             exercice_sets: sets,
             exercice_repetition: repetition,
             exercice_category: category,
             exercice_image: image,
+            id : 5
         })
             .then((response) => {
                 Swal.fire(
-                    'Exercice added seccussfully!',
+                    'Exercice updated seccussfully!',
                     'success'
                 )
 
@@ -78,7 +79,18 @@ function UpdateExercice() {
             })
     }
     useEffect( () => {
-        axios.Axios
+        axios.get('http://127.0.0.1:8000/api/fitness/getexercicebyid',{params :{id:5}})
+        .then( (response) => {
+            console.log(response.data.Exercice)
+            setRepetition(response.data.Exercice.exercice_repetition);
+            setSets(response.data.Exercice.exercice_sets);
+            setExerciceName(response.data.Exercice.exercice_name);
+            setImage(response.data.Exercice.exercice_image);
+            setCategory(response.data.Exercice.exercice_category)
+        })
+        .catch( (error) =>  {
+            console.log(error )
+        })
     }, [])
     return (
         <div className="exercice-container bg-gray-900 min-h-screen p-10">
@@ -89,7 +101,8 @@ function UpdateExercice() {
                         <div>
                             <label class="text-white dark:text-gray-200" for="username">Exercice name</label>
                             <input
-                                id="username"
+                                id="exercice_name"
+                                value={exerciceName}
                                 type="text"
                                 class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                                 onChange={(e) => handleExerciceNameChange(e)}
@@ -98,7 +111,8 @@ function UpdateExercice() {
 
                         <div>
                             <label class="text-white dark:text-gray-200" for="passwordConfirmation">Repetitions</label>
-                            <select name="exercice_repetition" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" onChange={(e) => handleRepetionChange(e, 'repetition')}>
+                            <select name="exercice_repetition"  class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" onChange={(e) => handleRepetionChange(e, 'repetition')}>
+                                <option value={repetition}>{repetition}</option>
                                 <option value={15}>15</option>
                                 <option value={12}>12</option>
                                 <option value={10}>10</option>
@@ -110,6 +124,7 @@ function UpdateExercice() {
                         <div>
                             <label class="text-white dark:text-gray-200" for="passwordConfirmation">Sets</label>
                             <select name="exercice_sets" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" onChange={(e) => handleRepetionChange(e, 'set')}>
+                                <option value={sets}>{sets}</option>
                                 <option value={1}>1</option>
                                 <option value={2}>2</option>
                                 <option value={3}>3</option>
@@ -121,13 +136,14 @@ function UpdateExercice() {
                         <div>
                             <label class="text-white dark:text-gray-200" for="passwordConfirmation">Category</label>
                             <select name="exercice_category" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" onChange={(e) => handleRepetionChange(e, 'category')} >
+                                <option value={category}>{category}</option>
+
                                 <option>Surabaya</option>
                                 <option>Jakarta</option>
                                 <option>Tangerang</option>
                                 <option>Bandung</option>
                             </select>
                         </div>
-
 
 
                         <div>
