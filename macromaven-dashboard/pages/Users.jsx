@@ -1,4 +1,5 @@
 import Sidebar from '@/components/Sidebar'
+import Head from 'next/head'
 import React from 'react'
 import { BsPersonFill, BsBackspaceFill } from 'react-icons/bs'
 
@@ -8,7 +9,9 @@ function Users() {
       <Sidebar />
 
       <div className='flex justify-between px-4 pt-4 ml-24'>
-        <h2 className='text-white font-semibold text-lg'>Users</h2>
+        <Head>
+          <h2 className='text-white font-semibold text-lg'>Users</h2>
+        </Head>
         <h2 className='text-white font-semibold text-lg'>Wlecome back, <span className='text-white font-bold'>Rabie</span></h2>
       </div>
       <div className="p-4 mx-[12%] my-4">

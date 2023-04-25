@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 function UpdateExercice() {
     const [repetition, setRepetition] = useState();
@@ -99,7 +100,9 @@ function UpdateExercice() {
     return (
         <div className="exercice-container bg-gray-900 min-h-screen p-10">
             <section class="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 p-10">
-                <h1 class="text-xl font-bold text-white capitalize dark:text-white">Account settings</h1>
+                <Head>
+                    <h1 class="text-xl font-bold text-white capitalize dark:text-white">Update exercice</h1>
+                </Head>
                 <form onSubmit={handleFormSubmit}>
                     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                         <div>

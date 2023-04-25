@@ -6,22 +6,32 @@ import Sidebar from '@/components/Sidebar';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-function Exercices() {
+export async function getServerSideProps() {
+    const promise = await axios.get('http://127.0.0.1:8000/api/fitness/getexercices')
+    .then((response) => {
+       return {
+        props: {
+            exercices : response.data.Exercices
+        }
+       }
+    })
+    .catch((error) => {
+        console.error(error);
+        return {
+            props: {
+                exercices: []
+            }
+        }
+    })
+    return promise;
 
-    const [exercices , setExercices] = useState();
+}
+
+function Exercices({exercices}) {
+
     const router = useRouter();
 
-    useEffect( () =>  {
-        axios.get('http://127.0.0.1:8000/api/fitness/getexercices')
-        .then( (response) =>  {
-            console.log(response);
-            setExercices(response.data.Exercices)
-        })
-        .catch( (erorr) => {
-            console.log(erorr)
-        })
-
-    }, [])
+    
 
     const NavigateToAnotherPage = (page, id) => {
         switch(page){
