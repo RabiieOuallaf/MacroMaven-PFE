@@ -58,19 +58,17 @@ class ExerciceController extends Controller
             return response()->json(['Error' => "There's a problem , please try later"], 401);
         }
     }
+
+    static public function displayExercices(Request $request) :? JsonResponse 
+    {
+        
+    }
+
     static public function deleteExercice(Request $request) :? JsonResponse
     {
 
-        $validator = Validator::make($request->all() , [
-            'id' => 'required'
-        ]);
-
-        if($validator->fails()){
-            return response()->json(['erorrs' => $validator->errors()], 400);
-        }
-        // Get the validated data 
-        $formField = $validator->validated();
-        $exercice = Exercice::find($formField['id']);
+        $id = self::validateExerciceId($request);
+        $exercice = Exercice::find($id);
 
         if($exercice->delete()){
             return response()->json(['Message' => 'Exercice deleted successfully !'], 200);
@@ -78,4 +76,18 @@ class ExerciceController extends Controller
             return response()->json(['Message' => "There's a problem , please try later"]);
         }
     }
+
+    static private function validateExerciceId($request) 
+    {
+        $validator = Validator::make($request->all() , [
+            'id' => 'required'
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['erorrs' => $validator->errors()], 400);
+        }
+        $data = $validator->validated();
+        return $data['id'];
+
+    } 
 }
