@@ -21,3 +21,4 @@ Route::post('/dietSuggestor', function(Request $request) {
     return response()->json($suggestedDiet);
 });
 Route::post('/addexercice',[ExerciceController::class, 'addExercice']);
+Route::post('/updateexercice',[ExerciceController::class, 'updateExercice']);
