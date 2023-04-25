@@ -3,6 +3,7 @@
 use App\Facades\FitnessFacade;
 use App\Http\Controllers\Fitness\BMICalculatorController;
 use App\Http\Controllers\Fitness\DietSuggestionController;
+use App\Http\Controllers\Fitness\ExerciceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,4 @@ Route::post('/dietSuggestor', function(Request $request) {
     $suggestedDiet = FitnessFacade::DietData($request);
     return response()->json($suggestedDiet);
 });
+Route::post('/addexercice',[ExerciceController::class, 'addExercice']);

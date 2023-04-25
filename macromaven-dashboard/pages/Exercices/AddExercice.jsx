@@ -15,22 +15,22 @@ function AddExercice() {
                         <div>
                             <label class="text-white dark:text-gray-200" for="passwordConfirmation">Repetitions</label>
                             <select class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                                <option>15</option>
-                                <option>12</option>
-                                <option>10</option>
-                                <option>8</option>
-                                <option>6</option>
+                                <option value={15}>15</option>
+                                <option value={12}>12</option>
+                                <option value={10}>10</option>
+                                <option value={8}>8</option>
+                                <option value={6}>6</option>
                             </select>
                         </div>
 
                         <div>
                             <label class="text-white dark:text-gray-200" for="passwordConfirmation">Sets</label>
                             <select class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option value={1}>1</option>
+                                <option value={2}>2</option>
+                                <option value={3}>3</option>
+                                <option value={4}>4</option>
+                                <option value={5}>5</option>
                             </select>
                         </div>
 
