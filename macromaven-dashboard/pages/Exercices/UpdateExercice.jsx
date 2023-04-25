@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import axios from 'axios';
 
-function UpdateExercice() {
+function UpdateExercice(props) {
     const [repetition, setRepetition] = useState();
     const [sets, setSets] = useState('');
     const [category, setCategory] = useState('');
@@ -18,7 +18,7 @@ function UpdateExercice() {
             exercice_repetition: repetition,
             exercice_category: category,
             exercice_image: image,
-            id : 5
+            id : props.id
         })
             .then((response) => {
                 Swal.fire(
@@ -79,7 +79,7 @@ function UpdateExercice() {
             })
     }
     useEffect( () => {
-        axios.get('http://127.0.0.1:8000/api/fitness/getexercicebyid',{params :{id:5}})
+        axios.get('http://127.0.0.1:8000/api/fitness/getexercicebyid',{params :{id:props.id}})
         .then( (response) => {
             console.log(response.data.Exercice)
             setRepetition(response.data.Exercice.exercice_repetition);

@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BsBackspaceFill } from 'react-icons/bs';
 import {AiFillEdit, AiOutlinePlusCircle} from 'react-icons/ai';
 import {exercice} from '@/public/images/exercice.png';
 import Sidebar from '@/components/Sidebar';
 
 function Exercices() {
+    useEffect( () =>  {
+        axios.get();
+    })
     return (
         <div className='bg-gray-900 min-h-screen'>
             <Sidebar />

@@ -88,6 +88,12 @@ class ExerciceController extends Controller
         }
     }
 
+    static public function getExercices() :? JsonResponse 
+    {
+        $exercices = Exercice::all();
+        return response()->json(['Exercices' => $exercices], 200);
+    }
+
 
     static private function validateExerciceId($request)
     {
