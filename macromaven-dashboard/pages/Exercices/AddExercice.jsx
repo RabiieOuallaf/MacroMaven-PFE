@@ -123,10 +123,11 @@ function AddExercice() {
                         <div>
                             <label class="text-white dark:text-gray-200" for="passwordConfirmation">Category</label>
                             <select name="exercice_category"class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" onChange={(e) => handleRepetionChange(e,'category')} >
-                                <option>Surabaya</option>
-                                <option>Jakarta</option>
-                                <option>Tangerang</option>
-                                <option>Bandung</option>
+                                <option>general</option>
+                                <option>chest</option>
+                                <option>legs</option>
+                                <option>back</option>
+                                <option>abs</option>
                             </select>
                         </div>
                        
