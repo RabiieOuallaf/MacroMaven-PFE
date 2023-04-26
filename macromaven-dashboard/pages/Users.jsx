@@ -3,6 +3,7 @@ import axios from 'axios'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import { BsPersonFill, BsBackspaceFill } from 'react-icons/bs'
+import Swal from 'sweetalert2'
 
 function Users() {
 
@@ -20,8 +21,25 @@ function Users() {
       })
   }, [])
 
-  const handleDeleteRequest = () => {
-    axios.post('')
+  const handleDeleteRequest = (id) => {
+    axios.delete('http://127.0.0.1:8000/api/auth/deleteuser', { params: { id } })
+      .then((response) => {
+        console.log(response);
+        Swal.fire(
+          'Exercice deleted!',
+          'success'
+        )
+      .catch( (erorr) => {
+        console.erorr(erorr);
+        Swal.fire({
+          title: 'Error!',
+          text: 'Please try later!!',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+      });
+      })
+
+      })
   }
   return (
     <div className="Users-container bg-gray-900 min-h-screen">
@@ -56,7 +74,9 @@ function Users() {
                   </div>
                 </td>
                 <td className='hidden md:flex justify-center'>{user.birthday}</td>
-                <td className='sm:text-left text-right justify-center'>{user.bmi[index].value}</td>
+                {user.bmi[index] ? (
+                  <td className='sm:text-left text-right justify-center'>{user.bmi[index].value}</td>
+                ) : 'BMI is not avialble yet!'}
                 <td className='hidden md:flex justify-center'>mediterranean</td>
                 <td className='hidden md:flex justify-center'>
                   <p className='font-bold text-red-500'><BsBackspaceFill cursor={'pointer'} onClick={() => handleDeleteRequest(user.id)} /></p>

@@ -60,7 +60,7 @@ function Exercices({exercices}) {
         .then( (response) => {
             console.log(response);
             Swal.fire(
-                'Exercice updated seccussfully!',
+                'Exercice deleted!',
                 'success'
             )
         })
