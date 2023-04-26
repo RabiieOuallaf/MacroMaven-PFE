@@ -14,3 +14,4 @@ Route::post('/getuser', [UserController::class, 'getUser']);
 Route::post('/updateuser', [UserController::class, 'updateUser']);
 
 Route::get('/getusers', [UserController::class, 'getUsers']);
+Route::delete('/deleteuser', [UserController::class, 'deleteUser']);

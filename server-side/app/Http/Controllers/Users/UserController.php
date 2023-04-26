@@ -56,4 +56,25 @@ class UserController extends Controller implements UserServiceInterface
         }
 
     }
+    static public function deleteUser(Request $request) :? JsonResponse 
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required', 
+        
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['erorrs' => $validator->errors()], 400);
+        }
+
+        $data = $validator->validated();
+        $user = User::find($data['id']);
+
+        if($user){
+            $user->delete();
+            return response()->json(['Message' => 'User deleted !'], 200);
+        }else {
+            return response()->json(['Message' => "There's a problem with your request , please try later"], 400);
+        }
+    }
 }

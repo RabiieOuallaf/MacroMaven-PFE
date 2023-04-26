@@ -19,6 +19,10 @@ function Users() {
         console.log(erorr)
       })
   }, [])
+
+  const handleDeleteRequest = () => {
+    axios.post('')
+  }
   return (
     <div className="Users-container bg-gray-900 min-h-screen">
       <Sidebar />
@@ -55,7 +59,7 @@ function Users() {
                 <td className='sm:text-left text-right justify-center'>{user.bmi[index].value}</td>
                 <td className='hidden md:flex justify-center'>mediterranean</td>
                 <td className='hidden md:flex justify-center'>
-                  <p className='font-bold text-red-500'><BsBackspaceFill cursor={'pointer'} onClick={() => handleDeleteRequest(exercice.id)} /></p>
+                  <p className='font-bold text-red-500'><BsBackspaceFill cursor={'pointer'} onClick={() => handleDeleteRequest(user.id)} /></p>
                 </td>
 
               </tr>
