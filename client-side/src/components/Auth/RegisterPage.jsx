@@ -35,7 +35,7 @@ function RegisterPage() {
                 if(Token && user_id) {
                     localStorage.setItem('token', response.data.message.original.Token);
                     localStorage.setItem('user_id', response.data.message.original.user_id);
-
+                    localStorage.setItem('user_role', response.data.message.original.role);
                     navigate('/bmicalculator');
                 }else {
                     Swal.fire({ 
