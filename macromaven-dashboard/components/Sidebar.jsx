@@ -28,7 +28,7 @@ function Sidebar() {
                 {/* Option */}
                 <span className='border-b-[1px] border-gray-200 w-full p-2'></span>
 
-                <Link href='/'>
+                <Link href='/Users'>
                     <div className='bg-gray-200 hover:bg-gray-100 duration-200 cursor-pointer my-4 p-3 rounded-lg inline-block'>
                         <RxPerson size={20}/>
                     </div>
@@ -37,7 +37,7 @@ function Sidebar() {
                 {/* Option */}
                 <span className='border-b-[1px] border-gray-200 w-full p-2'></span>
 
-                <Link href='/'>
+                <Link href='/Exercices/Exercices'>
                     <div className='bg-gray-200 hover:bg-gray-100 duration-200 cursor-pointer my-4 p-3 rounded-lg inline-block'>
                         <IoMdFitness size={20}/>
                     </div>
