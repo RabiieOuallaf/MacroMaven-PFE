@@ -121,8 +121,6 @@ function Exercices({exercices}) {
     </tbody>
   </table>
 </div>
-
-
                 <div className="add-exercice">
                     <AiOutlinePlusCircle color='white' size={30} cursor={'pointer'} onClick={() => NavigateToAnotherPage('add')}/>
                 </div>
