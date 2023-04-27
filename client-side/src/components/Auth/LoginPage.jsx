@@ -16,7 +16,10 @@ function LoginPage() {
         e.preventDefault();
         axios.post('http://127.0.0.1:8000/api/auth/login', { email, password, authenticationType: 'email' })
             .then((response) => {
-                console.log(response)
+                localStorage.setItem('token', response.data.message.original.Token);
+                localStorage.setItem('user_id', response.data.message.original.user_id);
+                localStorage.setItem('user_role', response.data.message.original.role);
+                navigate('/bmicalculator');
             })
             .catch((error => {
                 console.error(` The erorr is : ${error}`);
