@@ -4,12 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import NutritionSearchResults from '../utils/nutrition/NutritionSearchResults'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function NutritionSearchEngine() {
   const apiKey = process.env.REACT_APP_NUTRITION_API_KEY
   const [nutrition, setNutrition] = useState('');
   const [query, setQuery] = useState('');
-
+  const Navigate = useNavigate();
 
   useEffect(() => {
     if (query !== '') {
@@ -29,6 +30,13 @@ function NutritionSearchEngine() {
       })
     }
   }, [query]);
+
+  useEffect(() => {
+    const isAuthenticated = !!localStorage.getItem('token');
+    if (!isAuthenticated) {
+        Navigate('/register');
+    }
+}, [])
 
   // handle input change (searching)
   const handleInputChange = (e) => {

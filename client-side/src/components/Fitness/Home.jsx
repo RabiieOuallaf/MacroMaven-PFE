@@ -19,6 +19,13 @@ const HomePage = () => {
     const navigateToExercicePage = () => {
         Navigate('/workout');
     } 
+
+    useEffect(() => {
+        const isAuthenticated = !!localStorage.getItem('token');
+        if (!isAuthenticated) {
+            Navigate('/register');
+        }
+    }, [])
     
     return (
 

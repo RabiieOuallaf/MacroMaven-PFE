@@ -6,6 +6,8 @@ import BlogsIcon from '../../../icons/BlogsIcon.png';
 import dietIcon from '../../../icons/dietIcon.png';
 import chatIcon from '../../../icons/chatIcon.png';
 import doorIconblack from '../../../icons/doorIconblack.png';
+import workout from '../../../icons/workout.png';
+
 import { useNavigate } from 'react-router-dom';
 
 
@@ -13,30 +15,33 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Sidebar = () => {
-    
+
     // hook that creat a history object to make it possible to push new URL to the broweser's history
     const Navigate = useNavigate();
     // Sample switch case to handle the user's behavior   
     const handleIconClick = (id) => {
         switch (id) {
             case 'users':
-                Navigate('/user');
+                Navigate('/profile');
                 break;
             case 'main':
                 Navigate('/home');
                 break;
-            case 'blogs':
-                Navigate('/blogs');
-                break;
-            case 'diet':
+            case 'nutritionsearch':
                 Navigate('/nutritionsearch');
                 break;
-            case 'chat':
-                Navigate('/chat');
+            case 'workout':
+                Navigate('/workout');
                 break;
             case 'logout':
-                // Logout function will go here later
+                const keysToRemove = ['token', 'user_bmi', 'user_dietName', 'user_id'];
+
+                keysToRemove.forEach(key => {
+                    localStorage.removeItem(key);
+                });
+
                 break;
+
             default:
                 break;
         }
@@ -44,11 +49,11 @@ const Sidebar = () => {
     // Map that contain icons data , just to ehance the quality of the code.
     const icons = [
         { id: 'users', src: usersIcon, alt: 'Two user icons' },
-        { id: 'home', src: MainpageIcon, alt: 'Min page icon' },
-        { id: "blogs", src: BlogsIcon, alt: "blogs page icon" },
+        { id: 'home', src: MainpageIcon, alt: 'Main page icon' },
         { id: "nutritionsearch", src: dietIcon, alt: "diet page icon" },
-        { id: "chat", src: chatIcon, alt: "chat page icon" },
-        { id: "logout mt-16", src: doorIconblack, alt: "logout icon icon" }
+        { id: "workout", src: workout, alt: "workout icon" },
+        { id: "logout", src: doorIconblack, alt: "logout icon icon" }
+
 
     ]
     return (

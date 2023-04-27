@@ -5,10 +5,13 @@ import male from '../../icons/male.png';
 import female from '../../icons/female.png';
 import Range from '../utils/fitness/Range';
 import { useBmiContext } from '../../Contexts/BmiDataContextProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function BmiCalculator() {
+
+    const Navigate = useNavigate();
+
     const [gender, setGender] = useState('male');
     const [height, setHeight] = useState();
     const [weight, setWeight] = useState();
@@ -58,6 +61,13 @@ function BmiCalculator() {
         console.log(bmiData ? bmiData : '');
         getUserBmiData(height, weight, gender, user_id);
     }
+
+    useEffect(() => {
+        const isAuthenticated = !!localStorage.getItem('token');
+        if (!isAuthenticated) {
+            Navigate('/register');
+        }
+    }, [])
 
 
 
