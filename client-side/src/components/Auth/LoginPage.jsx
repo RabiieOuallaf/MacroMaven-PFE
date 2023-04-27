@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import loginBg from '../../images/authentificationPages/loginBg.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faLock, faUser} from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
+import { faLock, faUser } from '@fortawesome/free-solid-svg-icons'
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function LoginPage() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
 
     const handleLoginForm = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:8000/api/auth/login', { email, password,authenticationType: 'email' })
+        axios.post('http://127.0.0.1:8000/api/auth/login', { email, password, authenticationType: 'email' })
             .then((response) => {
                 console.log(response)
             })
@@ -20,6 +22,12 @@ function LoginPage() {
                 console.error(` The erorr is : ${error}`);
             }))
     }
+    useEffect(() => {
+        const isAuthenticated = !!localStorage.getItem('token');
+        if (isAuthenticated) {
+            navigate('/home');
+        }
+    }, [])
     return (
 
         <section className='w-screen h-screen bg-slate-950 flex flex-row justify-center items-center  gap-6 '>
@@ -27,37 +35,37 @@ function LoginPage() {
             <div className="container bg-gradient-to-r from-[#D8D5D6] to-gray-500 w-[75%] h-[90%] flex rounded-3xl p-5">
                 <div className="register-form w-[70%] flex justify-center items-center">
                     <form onSubmit={handleLoginForm} className='flex flex-col justify-around'>
-                    {/*  headers */}
+                        {/*  headers */}
 
                         <div className="user-greeting text-5xl font-bold mb-20">
                             <h2 className='text-white '>Welcome <span className='text-blue-700'>back</span></h2>
                         </div>
-                    {/* == User name input section == */}
+                        {/* == User name input section == */}
 
                         <div className="user-section my-4 mx-12 flex justify-center my-12 ">
-                            <input 
-                                type="email" 
-                                placeholder='Rabie@Ouallaf.com' 
+                            <input
+                                type="email"
+                                placeholder='Rabie@Ouallaf.com'
                                 className='w-72 h-10 rounded-xl p-5 absolute text-center'
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}   
+                                onChange={(e) => setEmail(e.target.value)}
                             />
-                            <FontAwesomeIcon icon={faUser} className='relative top-3 right-32'/>
+                            <FontAwesomeIcon icon={faUser} className='relative top-3 right-32' />
 
                         </div>
 
-                    {/* == User password input section == */}
+                        {/* == User password input section == */}
 
 
                         <div className="password-section my-4 mx-12 flex justify-center my-12">
-                            <input 
-                                type="password" 
-                                placeholder='*********************************' 
-                                className='w-72 h-10 rounded-xl p-5 absolute text-center' 
-                                value={password}    
+                            <input
+                                type="password"
+                                placeholder='*********************************'
+                                className='w-72 h-10 rounded-xl p-5 absolute text-center'
+                                value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            <FontAwesomeIcon icon={faLock} className='relative top-3 right-32'/>
+                            <FontAwesomeIcon icon={faLock} className='relative top-3 right-32' />
                         </div>
 
                         <div className='my-4 mx-20 flex justify-center flex-col '>
