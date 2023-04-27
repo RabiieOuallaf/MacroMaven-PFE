@@ -19,21 +19,23 @@ function LoginPage() {
                 localStorage.setItem('token', response.data.message.original.token);
                 localStorage.setItem('user_id', response.data.message.original.user.id);
                 localStorage.setItem('user_role', response.data.message.original.user.role);
-                // navigate('/bmicalculator');
-                console.log(response.data.message.original.user.id);
-                console.log(response.data.message.original.user.role);
+                const user_role =  localStorage.getItem('user_role');
+                navigate('/bmicalculator');
+                if(user_role == 'admin'){
+                    window.location.href = 'http://localhost:3000'; 
+                }
 
             })
             .catch((error => {
                 console.error(` The erorr is : ${error}`);
             }))
     }
-    // useEffect(() => {
-    //     const isAuthenticated = !!localStorage.getItem('token');
-    //     if (isAuthenticated) {
-    //         navigate('/home');
-    //     }
-    // }, [])
+            useEffect(() => {
+                const isAuthenticated = !!localStorage.getItem('token');
+                if (isAuthenticated) {
+                    navigate('/home');
+                }
+            }, [])
     return (
 
         <section className='w-screen h-screen bg-slate-950 flex flex-row justify-center items-center  gap-6 '>

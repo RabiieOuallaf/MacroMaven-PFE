@@ -26,9 +26,10 @@ function Users() {
       .then((response) => {
         console.log(response);
         Swal.fire(
-          'Exercice deleted!',
+          'User deleted!',
           'success'
         )
+      })
       .catch( (erorr) => {
         console.erorr(erorr);
         Swal.fire({
@@ -37,7 +38,6 @@ function Users() {
           icon: 'error',
           confirmButtonText: 'Cool'
       });
-      })
 
       })
   }
