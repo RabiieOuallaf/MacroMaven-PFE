@@ -33,8 +33,13 @@ function NutritionSearchEngine() {
 
   useEffect(() => {
     const isAuthenticated = !!localStorage.getItem('token');
+    const isCalculatedBmi = !!localStorage.getItem('user_dietName');
+
     if (!isAuthenticated) {
         Navigate('/register');
+    }
+    if (!isCalculatedBmi){
+      Navigate('bmicalculator');
     }
 }, [])
 
