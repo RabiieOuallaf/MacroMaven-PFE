@@ -22,8 +22,12 @@ const HomePage = () => {
 
     useEffect(() => {
         const isAuthenticated = !!localStorage.getItem('token');
+        const isCalculatedBmi = !!localStorage.getItem('user_bmi');
         if (!isAuthenticated) {
             Navigate('/register');
+        }
+        if(!isCalculatedBmi){
+            Navigate('/bmicalculator')
         }
     }, [])
     
