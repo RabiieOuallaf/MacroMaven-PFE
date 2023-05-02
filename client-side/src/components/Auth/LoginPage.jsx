@@ -11,7 +11,6 @@ function LoginPage() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-
     const handleLoginForm = (e) => {
         e.preventDefault();
         axios.post('http://127.0.0.1:8000/api/auth/login', { email, password, authenticationType: 'email' })
@@ -30,6 +29,7 @@ function LoginPage() {
                 console.error(` The erorr is : ${error}`);
             }))
     }
+    // 
             useEffect(() => {
                 const isAuthenticated = !!localStorage.getItem('token');
                 if (isAuthenticated) {
