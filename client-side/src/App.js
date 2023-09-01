@@ -65,13 +65,4 @@ export default function App() {
   );
 }
 
-// const Root = () => {
-//   return <>
-//     here
-
-//     <div>
-//       <Outlet />
-//     </div>
-//   </>
-// }
 

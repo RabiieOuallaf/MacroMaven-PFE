@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faUser } from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2'
+
 
 function LoginPage() {
 
@@ -18,16 +20,32 @@ function LoginPage() {
                 localStorage.setItem('token', response.data.message.original.token);
                 localStorage.setItem('user_id', response.data.message.original.user.id);
                 localStorage.setItem('user_role', response.data.message.original.user.role);
+
+                
+
+                console.log('okay')
+
                 const user_role =  localStorage.getItem('user_role');
                 navigate('/bmicalculator');
                 if(user_role == 'admin'){
                     window.location.href = 'http://localhost:3000'; 
                 }
+               
 
             })
-            .catch((error => {
-                console.error(` The erorr is : ${error}`);
-            }))
+            .catch(() => {
+
+                localStorage.removeItem('token');
+                localStorage.removeItem('user_id');
+                localStorage.removeItem('user_role');
+                
+                Swal.fire({ 
+                    title: 'Error!',
+                    text: 'Please check your credentails !',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  })
+            })
     }
     // 
             useEffect(() => {

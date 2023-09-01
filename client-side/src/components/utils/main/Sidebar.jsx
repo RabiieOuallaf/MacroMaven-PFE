@@ -39,6 +39,7 @@ const Sidebar = () => {
                 keysToRemove.forEach(key => {
                     localStorage.removeItem(key);
                 });
+                Navigate('/login');
 
                 break;
 

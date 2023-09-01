@@ -53,7 +53,7 @@ const HomePage = () => {
                 {/* == Quotes == */}
                 <Quote />
                 <div className="flex justify-center items-center w-[100%] h-[68%]">
-                <Canvas onClick={navigateToExercicePage} className="cursor-pointer">
+                <Canvas  className="cursor-pointer">
                     <OrbitControls enableZoom={false}/>  
                     <ambientLight intensity={0.5}/> 
                     <directionalLight position={[-2, 5, 2]} intensity={1} />

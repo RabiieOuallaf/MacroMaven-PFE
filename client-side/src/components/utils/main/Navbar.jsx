@@ -19,9 +19,7 @@ function Navbar() {
 
                 <li className='cursor-pointer hover:text-blue-500 duration-300'><Link to='/home'>Home</Link></li>
                 <li className='cursor-pointer hover:text-blue-500 duration-300'><Link to='/profile'>Profile</Link> </li>
-                <li className='cursor-pointer hover:text-blue-500 duration-300'><Link to='/chat'>Chat</Link></li>
                 <li className='cursor-pointer hover:text-blue-500 duration-300'><Link to='/nutritionsearch'>Nutrition</Link></li>
-                <li className='cursor-pointer hover:text-blue-500 duration-300'><Link to='/blogs'>Blogs</Link></li>
 
             </ul>
         </div>

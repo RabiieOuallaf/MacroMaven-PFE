@@ -9,6 +9,7 @@ Title: Ecorche - Anatomy study
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { motion } from "framer-motion-3d"
 
 export function Male(props) {
   const { nodes, materials } = useGLTF('/male.gltf')

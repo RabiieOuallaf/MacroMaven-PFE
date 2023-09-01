@@ -47,10 +47,7 @@ function Profile() {
             <h2 className='text-3xl text-slate-950 absolute left-[22%] cursor-pointer'>{userData.name}</h2>
             <h4 className='absolute left-[23%] top-[56.5%] text-2xl cursor-pointer'> <span className='text-blue-500'> {userData.age} </span>Years old</h4>
           </div>
-          
-          <div className="message-button">
-            <button className='bg-slate-950 text-white w-32 rounded-xl p-1 absolute hover:bg-blue-500 duration-300 ease-in top-[70%] left-[11%]'>Message</button>
-          </div>
+
 
           
         </div>
