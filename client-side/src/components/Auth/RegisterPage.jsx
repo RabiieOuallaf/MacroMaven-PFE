@@ -42,7 +42,7 @@ function RegisterPage() {
                         title: 'Error!',
                         text: 'Please check your credentails !',
                         icon: 'error',
-                        confirmButtonText: 'Cool'
+                        confirmButtonText: 'OK'
                       })
                 }
                 
@@ -50,9 +50,9 @@ function RegisterPage() {
             .catch((error => {
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Please check your credentials!',
+                    text: "There's a problem with the server please try after few seconds",
                     icon: 'error',
-                    confirmButtonText: 'Cool'
+                    confirmButtonText: 'OK'
                 });
                 console.error(` The erorr is : ${error}`);
             }))
@@ -156,7 +156,7 @@ function RegisterPage() {
                         <div className="user-section my-4 mx-12 flex justify-center">
                             <input
                                 type="text"
-                                placeholder='Rabie Ouallaf'
+                                placeholder='Username'
                                 className='w-72 h-10 rounded-xl p-5 absolute text-center'
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
@@ -170,7 +170,7 @@ function RegisterPage() {
                         <div className="email-section my-4 mx-12 flex justify-center ">
                             <input
                                 type="email"
-                                placeholder='rabie@gmail.com'
+                                placeholder='Email'
                                 className='w-72 h-10 rounded-xl p-5 absolute text-center'
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -184,7 +184,6 @@ function RegisterPage() {
                         <div className="email-section my-4 mx-12 flex justify-center items-center ">
                             <input
                                 type="date"
-                                placeholder='rabie@gmail.com'
                                 className='w-72 h-10 rounded-xl text-center'
                                 value={birthday}
                                 onChange={(e) => setBirthday(e.target.value)}

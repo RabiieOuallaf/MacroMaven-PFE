@@ -5,8 +5,7 @@ import waterIcon from '../../../icons/waterIcon.png';
 import protienIcon from '../../../icons/protienIcon.png';
 import MacrosLine from './MacrosLine';
 import { useDietContext } from '../../../Contexts/SuggestedDietContextProvider';
-import { useBmiContext } from '../../../Contexts/BmiDataContextProvider';
-
+import faticon from '../../../icons/faticon.png'
 
 
 function Diet() {
@@ -34,8 +33,8 @@ function Diet() {
                 <h2 className='text-3xl font-bold text-center text-white my-14'>{SuggestedDiet.name}</h2>
 
                 <MacrosLine
-                    name='Burned calories' goal={`${SuggestedDiet.fats}g`} img={waterIcon}
-                    Sname='Carbs' Sgoal={`${SuggestedDiet.protein}g`} Simg={protienIcon}
+                    name='Fat' goal={`${SuggestedDiet.fats}g`} img={faticon}
+                    Sname='Protien' Sgoal={`${SuggestedDiet.protein}g`} Simg={protienIcon}
                 />
 
             </div>
