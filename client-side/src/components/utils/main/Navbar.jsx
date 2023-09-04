@@ -10,7 +10,9 @@ function Navbar() {
         {/* == Logo == */}
         <div className="logo">
 
-            <img src={macroMavenLogo} alt="macromaven website logo" className='w-8'/>
+            <Link to='/home'>
+                <img src={macroMavenLogo} alt="macromaven website logo" className='w-8'/>
+            </Link>
             
         </div>
         {/* == options == */}

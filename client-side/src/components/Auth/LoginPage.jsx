@@ -21,10 +21,7 @@ function LoginPage() {
                 localStorage.setItem('user_id', response.data.message.original.user.id);
                 localStorage.setItem('user_role', response.data.message.original.user.role);
 
-                
-
-                console.log('okay')
-
+            
                 const user_role =  localStorage.getItem('user_role');
                 navigate('/bmicalculator');
                 if(user_role == 'admin'){

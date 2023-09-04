@@ -24,7 +24,7 @@ const Sidebar = () => {
             case 'users':
                 Navigate('/profile');
                 break;
-            case 'main':
+            case 'home':
                 Navigate('/home');
                 break;
             case 'nutritionsearch':
@@ -44,6 +44,7 @@ const Sidebar = () => {
                 break;
 
             default:
+                Navigate('/');
                 break;
         }
     };

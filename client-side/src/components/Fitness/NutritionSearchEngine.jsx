@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function NutritionSearchEngine() {
-  const apiKey = process.env.REACT_APP_NUTRITION_API_KEY
+  const apiKey = "XmYehtrDyhAOZC6JtWFrc1cgtvaogg6YTeEoGA6v";
   const [nutrition, setNutrition] = useState('');
   const [query, setQuery] = useState('');
   const Navigate = useNavigate();
@@ -66,13 +66,7 @@ function NutritionSearchEngine() {
           onChange={handleInputChange} 
           value={query}  
         />
-        <FontAwesomeIcon 
-          icon={faSearch}  
-          size="lg" 
-          color="#fff" 
-          className='absolute end-[16.1%] top-[46%] hover:text-blue-400 duration-200 ease-in-out'
-          onClick={() => setQuery(query)} 
-        />
+       
       </div>
 
 
